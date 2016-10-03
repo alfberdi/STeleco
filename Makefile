@@ -1,0 +1,1 @@
+pdflatex -file-line-error STeleco.tex
