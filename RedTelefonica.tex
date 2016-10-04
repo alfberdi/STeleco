@@ -230,7 +230,6 @@ Se desea:\\
 \end{exercise}
 \begin{exercise}[9]
 En la red telefónica de la figura se muestran las rutas finales y las secciones directas. La probabilidad de bloqueo es del 1\% y una probabilidad de desbordamiento del 10\% . Sobre esta red, se le pide lo siguiente:
-\myworries{cambiar la figura para incluir las letras de las centrales y las rutas directas}
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{Imagen/ejercicio9tema1.jpg}
@@ -303,11 +302,52 @@ TC_{DC}=TO_{DC}(1-P_B)=57.42E
 \end{exercise}
 \begin{exercise}[10]
 Utilice la red de la figura y la tabla adjunta (que es simétrica) para contestar a las siguientes preguntas:\\
-NOTA: La probabilidad de pérdidas en ruta final es del 1 \% y la probabilidad de desbordamiento en secciones directas es del 10\% .\\
-\myworries{Incluir imagen y tabla del ejercicio}
-\textbf{1.} Rutas entre las siguientes centrales: A$\to$I,I$\to$G,A$\to$G,J$\to$G.\\
-
+NOTA: La probabilidad de pérdidas en ruta final es del 1 \% y la probabilidad de desbordamiento en secciones directas es del 10\% .
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{Imagen/ejercicio10tema1.jpg}
+\label{}
+\end{figure}
+\begin{center}
+\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c |}
+\hline
+   & A & B  & C  & D  & E  & F  & G & H  & I  & J  \\\hline
+ A & - & 15 & 15 & 10 & 3  & 5  & 4 & 10 & 5  & 1  \\\hline
+ B &   & -  & 15 & 10 & 3  & 5  & 5 & 10 & 5  & 1  \\\hline
+ C &   &    & -  & 10 & 20 & 30 & 1 & 1  & 5  & 2  \\\hline
+ D &   &    &    & -  & 10 & 10 & 5 & 1  & 2  & 1  \\\hline
+ E &   &    &    &    & -  & 5  & 5 & 25 & 10 & 5  \\\hline
+ F &   &    &    &    &    & -  & 5 & 5  & 10 & 2  \\\hline
+ G &   &    &    &    &    &    & - & 10 & 5  & 2  \\\hline
+ H &   &    &    &    &    &    &   & -  & 5  & 2  \\\hline
+ I &   &    &    &    &    &    &   &    & -  & 2  \\\hline
+\end{tabular}
+\end{center}
+\textbf{1.} Rutas entre las siguientes centrales: A$\to$I, I$\to$G, A$\to$G, J$\to$G.\\
+\begin{center}
+\begin{tabular}{c c c c}
+A$\to$I & AI  		& I$\to$G 	& IFG 		\\
+ 		& ABHI		&			& IHEFG		\\
+ 		& ABCHI		&			& IHCFG		\\
+ 		& 			&			& IHCDEFG	\\
+A$\to$G & ABCFG  	& J$\to$G 	& JHEFG 	\\
+ 		& ABCDEFG	&			& JHCFG		\\
+ 		& 			&			& JHCDEFG	\\
+\end{tabular}
+\end{center}
 \textbf{2.} Tráfico ofrecido y cursado en la sección directa CE/EC.\\
+\begin{gather*}
+TO_{CE}=TO_{CEpropio}+TO_{HEdesb}+TO_{BE}+TO_{AE}\\
+TO_{HE}=TO_{HEpropio}+TO_{IFdesb}+TO_{HF}+TO_{HG}+TO_{JE}+TO_{JF}+TO_{JG}\\
+TO_{IF}=TO_{IFpropio}+TO_{IG}=15E\\
+TO_{HE}=50.5E\\
+TO_{CE}=31.05E\\
+TC_{CE}=TO_{CE}(1-P_B)=30.7395E\\
+TO_{EC}=TO_{ECpropio}+TO_{FC'desb}+TO_{EB}+TO_{EA}\\
+TO_{FC'}=TO_{FCpropio}+TO_{FB}+TO_{FA}+TO_{GC}+TO_{GB}+TO_{GA}=50E\\
+TO_{EC}=31E\\
+TC_{EC}=30.69E
+\end{gather*}
 \end{exercise}
 \begin{exercise}[11]
 En la comunidad Autónoma de Andalucía (con 8 provincia), existe una central secundaria en cada provincia para cursar el tráfico provincial, y solo una central terciaria situada en Sevilla para cursar el tráfico interprovincial. Ahí es precisamente donde se sitúa el proveedor de servicios de Internet o ISP. Asumamos que cada provincia está compuesta por 10 localidades (es un escenario ficticio pero es para poder simplificar el ejercicio), y en cada una de ellas se encuentra situada una central primaria, para cursar el tráfico local. Asimismo, cada localidad está formada por una serie de barrios, y en cada uno de ellos existe una central local con capacidad para 2000 líneas.\\
