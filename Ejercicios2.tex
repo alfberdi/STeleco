@@ -1,6 +1,6 @@
 \subsection{Ejercicios}
 \begin{exercise}[1]
-Se desea estudiar el envío de paquetes de 128 bytes en una red de conmutación de paquetes con encaminamiento fijo. El enlace entre nodos tiene una capacidad de 64kbps.\\
+Se desea estudiar el envío de paquetes de 128 bytes en una red de conmutación de paquetes con encaminamiento fijo. El enlace entre nodos tiene una capacidad de 64\gls{kbps}.\\
 \textbf{1.} ¿Qué modelo de sistema de colas se puede aplicar?.\\
 Se trata de un sistema M/M/1\\
 \textbf{2.} ¿Cuál es el número medio de paquetes servidos por segundo?\\
@@ -399,8 +399,28 @@ Se ha medido el siguiente tráfico por ususario en este escenario:
 \textbf{NOTA:} Para los apartados 3 y 4 (y solo para ellos) utilize las siguientes aproximaciones de la Erlang-B: $B(c,A_o)=0.01=\sfrac{A_o}{85c}$; $B(c,A_o)=0.1=\sfrac{A_o}{102c}$ y para la Erlang-C: $C(c,A_o)=0.01=\sfrac{7A_o}{c}$; $C(c,A_o)=0.1=\sfrac{53A_o}{c}$.\\
 Se le pide que dimensione alguno de los enlaces de la red anterior:\\
 \textbf{1.} Calcule el número de sistemas MIC de norma Europea en el enlace entre la central local y la central primaria.\\
+\begin{gather*}
+\lambda_{local}=2\sfrac{llamadas}{HC}\\
+E{s}_{local}=144\sfrac{segundos}{llamada}\\
+a_{o_{local}}=\lambda E{s}=2*144*\frac{1}{3600}=80mE\text{ por abonado}\\
+\lambda_{nolocal}=1\sfrac{llamadas}{HC}\\
+E{s}_{nolocal}=450\sfrac{segundos}{llamada}\\
+a_{o_{nolocal}}=\lambda E{s}=1*450*\frac{1}{3600}=125mE\text{ por abonado}\\
+A_{CLCP}=P_{DCL}a_{o_{local}}N_{lineas}+P_{DCS}a_{o_{nolocal}}N_{lineas}=53.5E\\
+B(c,A_{CLCP})=0.01 \to c=70\text{ canales}\\
+\frac{c}{30}=2.33 \to N_{MIC}=3\text{ sistemas MIC de norma europea}
+\end{gather*}
 \textbf{2.} Calcule el número de barrios por localidad sabiendo que la capacidad de la central primaria es 1090E\\
+\[N_{CL}=\frac{C_{CP}}{A_{CLCP}}=20.37\to N_{CL}=20 \text{ centrales locales}\]
 \textbf{3.} ¿Cuántos canales duplex serían necesarios para conectar la central primaria y su secundaria jerarquica?\\
+\begin{gather*}
+A_{CPCS}=a_{o_{nolocal}}P_{DCS}N_{lineas}N_{CL}=750E\\
+B(c,A_{CPCS})=0.01=\frac{A_{CPCS}}{85c}\to c=883\text{ canales duplex}
+\end{gather*}
 \textbf{4.} El enlace entre las centrales secundarias y su terciaria se realiza mediante SDH. Calcule la jerarquía mínima SDH  necesaria para cursar todo el tráfico.\\
+\begin{gather*}
+A_{CSCT}=a_{o_{nolocal}}70\%N_{lineas}N_{CL}10=35000E\\
+B(c,A_{CSCT})=0.01=\frac{A_{CSCT}}{85c}\to c=4117\text{ canales duplex}
+\end{gather*}
 \textbf{5.} ¿Se podría utilizar SNCP en el enlace anterior? Razone su respuesta.
 \end{exercise}
