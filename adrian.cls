@@ -8,21 +8,26 @@
 \RequirePackage{graphicx}
 \RequirePackage{amsmath}
 \RequirePackage[utf8]{inputenc}
-\RequirePackage{epstopdf}
 \RequirePackage{xfrac}
 \RequirePackage{float}
 \RequirePackage{xcolor}
-%\RequirePackage[a4paper,margin=1.5cm]{geometry}
+%\RequirePackage{glossaries}
+%\RequirePackage{tocloft}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 
 \LoadClass{article}
 
+
+%\newcommand{\listexampletitle}{Lista de Ejemplos}
+
+%\newlistof[section]{examples}{exp}{\listexampletitle}
+\renewcommand{\contentsname}{Índice}
 \newcounter{example}[section]
 
 \newenvironment{example}[1][]
-{\rule{0.5\textwidth}{1pt}
+{\\\rule{0.5\textwidth}{1pt}
 \refstepcounter{example}\par\medskip \noindent \textbf{Ejemplo~\theexample. #1}\\}
 {\\\rule{0.5\textwidth}{1pt}}
 
