@@ -57,6 +57,7 @@ El SDH utiliza como unidad básica el STM-1 (Módulo de Transferencia Sincrona).
 	\item MSOH: Cabezera de multiplexación, número de cargas, posición de cada una de ellas, etc.
 	\item Pointer: Puntero al inicio de la carga util.
 \end{itemize}
+\subsubsection{Estructura de la multiplexación en SDH}
 En la siguiente figura se puede ver la estructura seguida para la multiplexación de los diferentes contenedores de carga.
 \begin{figure}[H]
 \centering
@@ -64,3 +65,24 @@ En la siguiente figura se puede ver la estructura seguida para la multiplexació
 \caption{Estructura de la multiplexación en SDH}
 \label{}
 \end{figure}
+\begin{itemize}
+	\item C-x: Contenedor número x. Espacio de la trama dedicado a datos, se mide en Mbps. Un C-4 ocupa todo el espacio de payload de un STM-1.
+	\item VC-x: Contenedor Virtual es un C-x con información del contenido del mismo. POH+C-x=VC-x
+	\item AU-x: Unidad administrativa. Incluye un puntero a los contenedores virtuales
+	\item TU-x: Unidad Tributaria, incluye información de la tarificación.
+	\item TUG-x: Unidad Tributaria y de Gestión.
+	\item AUG: Unidad Administrativa y de gestión.
+	\item STS: es la unidad básica de la adaptación de SDH para el cable coaxial, similar al STM para la fibra óptica.
+	\item STM: Módulo de Transferencia Síncrona.
+\end{itemize}
+El acto de mapear se da en el paso de un contenedor a su contenedor virtual. El alineamiento de los diferentes contenedores virtuales se produce para la obtención de unidades administrativas y tributarias. La multiplexación se produce al juntar todos los sistemas menores dentro de los STM.\\
+Dentro de un STM-1 se pueden contener los siguientes contenedores:
+\[STM-1=
+\begin{cases}
+63, & \text{c-12}\\
+21, & \text{c-2}\\
+3, & \text{c-3}\\
+1, & \text{c-4}
+\end{cases}
+\]
+\subsubsection{SNCP SubNetwork Connection Protection}
