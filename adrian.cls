@@ -24,6 +24,7 @@
 
 %\newlistof[section]{examples}{exp}{\listexampletitle}
 \renewcommand{\contentsname}{Índice}
+\renewcommand{\figurename}{Figura}
 \newcounter{example}[section]
 
 \newenvironment{example}[1][]
