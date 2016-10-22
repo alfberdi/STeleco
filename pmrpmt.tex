@@ -1,0 +1,31 @@
+\section{Redes de comunicaciones moviles terrestres}
+\subsection{Sistemas PMR y PMT}
+\begin{itemize}
+\item{PMR(Private Movil Radio):} Sistemas normalmente no conectados a la red telefónica pública conmutada que se modelan como sistemas de espera.
+\item{PMT(Personal Movil Telecommunications):} Sistemas conectados a la red telefónica pública modelados como sistemas con pérdidas. 
+\end{itemize}
+\subsubsection{Private Movil Radio}
+\label{ssub:PMR}
+Las características que definen este sistema son las siguientes:
+\begin{itemize}
+	\item Tienen una area territorial limitada.
+	\item No suelen estar conectados a la red telefónica pública conmutada(POTS).
+	\item Se suelen usar para dar servicios de empresa como la gestión de flotas.
+	\item Deben ser posibles tanto las llamadas entre estaciones moviles (MS) entre sí como las llamadas a grupos.
+	\item Deben funcionar en regimen de espera con llamadas frecuentes y de corta duración.
+	\item Lo normal es que funcionen en simplex pero hay casos de sistemas en semiduplex e incluso en full-duplex.
+\end{itemize}
+El ejemplo más representativo de los sistemas PMR es el sistema Trans European Trunked RAdio (TETRA). Dependiendo de como se asignen los canales de comunicación a los ususarios del sistema se puede distinguir entre los dos siguientes sistemas:
+\begin{itemize}
+	\item Asignación rígida: a un conjunto de ususarios se les asigna un único canal para la comunicación. Es un sistema de asignación bastante poco efectivo, por esto, se suele usar con colectivos relativamente pequeños.
+	\item Asignación troncal: se tienen N canales que pueden ser usados por M usuarios.
+\end{itemize}
+l
+\begin{example}[Sistemas PMR]
+Se tiene un sistema PMR en el que los usuarios piden 1 llamada de 20 segundos por HC
+\begin{gather*}
+	\mu=\sfrac{1}{20}s^{-1}\\
+	a_o=\frac{\lambda}{\mu}=\frac{20}{3600}=5.56mE	
+\end{gather*}
+\end{example}
+% subsubsection PMR (end)
