@@ -12,17 +12,12 @@
 \RequirePackage{float}
 \RequirePackage{xcolor}
 %\RequirePackage{glossaries}
-%\RequirePackage{tocloft}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 
 \LoadClass{article}
 
-
-%\newcommand{\listexampletitle}{Lista de Ejemplos}
-
-%\newlistof[section]{examples}{exp}{\listexampletitle}
 \renewcommand{\contentsname}{Índice}
 \renewcommand{\figurename}{Figura}
 \newcounter{example}[section]
@@ -30,7 +25,7 @@
 \newenvironment{example}[1][]
 {\\\rule{0.5\textwidth}{1pt}
 \refstepcounter{example}\par\medskip \noindent \textbf{Ejemplo~\theexample. #1}\\}
-{\\\rule{0.5\textwidth}{1pt}}
+{\\\rule{0.5\textwidth}{1pt}\\}
 
 \newenvironment{exercise}[1][]
 {\textbf{\underline{Problema}~\thesection.#1}\\}
@@ -38,4 +33,3 @@
 
 \newcommand\myworries[1]{\textcolor{red}{#1}\\}
 %\renewcommand\myworries[1]{}
-%\renewenvironment{equation}[1]
