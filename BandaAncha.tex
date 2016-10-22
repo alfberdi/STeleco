@@ -86,3 +86,10 @@ Dentro de un STM-1 se pueden contener los siguientes contenedores:
 \end{cases}
 \]
 \subsubsection{SNCP SubNetwork Connection Protection}
+En fibra óptica siempre se encuentran pares de fibra ya que los componentes no son recíprocos. El emisor solo es capaz de transmitir y el receptor solo puede recibir. Además los sistemas de fibra siempre toman forma de anillo, en caso de ruptura.\\
+SNCP es un sistema similar a flooding. Todos los paquetes se envian por ambos lados del anillo. El mayor problema es que reduce a la mitad la capacidad de los enlaces. En cambio todos los nodos reciben información sobre los enlaces caidos.
+\subsubsection{MS-Spring}
+Este sistema de protección está diseñado para sistemas STM-16 en adelante. A diferencia de SNCP el anillo tiene la capacidad completa hasta que alguno de los nodos se rompe. En caso de caida, la capacidad se divide a la mitad. Este sistema protege a nivel de contenedor virtual 4. \\
+Si se elige dar prioridad a la protección se descartarán cargas utiles en caso de caida de alguno de los nodos.
+\subsection{(D)WDM}
+Dense Wavelength Division Multiplexing, se denomina a sistemas donde se multiplexan 40 o más longitudes de onda. Los sistemas DWDM necesitan fibras monomodo que son mucho más dificiles de producir y son mucho más caras. Otra ventaja de la multiplexación por longitud de onda es el aumento del span, distancia entre finales de la fibra. Tećnicas de multiplexación por longitud de onda con menos de 40 longitudes de onda se denominan coarseWDM. Estos sistemas son mucho más accesibles.
