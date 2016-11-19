@@ -24,7 +24,6 @@ En la imagen se puede ver la arquitectura de red del sistema GSM con todas sus p
 \caption{Arquitectura del sistema GSM}
 \label{img:arquiGSM}
 \end{figure}
-% subsubsection arquiGSM (end)
 \begin{itemize}
 	\item Base Transmission Station (BTS): Se trata de la antena y los amplificadores de señal, no contiene ningún tipo de "inteligencia", todo se controla desde otros subsistemas.
 	\item Mobile Station (MS): Sistema móvil.
@@ -41,4 +40,57 @@ En la imagen se puede ver la arquitectura de red del sistema GSM con todas sus p
 	\item Interfaz de linea o interfaz A: interfaz de conexión entre las MSC y las BSC.
 	\item Interfaz A-bis: interfaz de conxión entre las BSC y las BTS. Esta interfaz surje junto a la idea de conectar varias BTS a una sola BSC, en las especifiaciones iniciales esto no era necesario.
 \end{itemize}
+% subsubsection arquiGSM (end)
+\subsubsection{Servicios del sistema GSM}
+\label{ssub:serviciosGSM}
+Hay dos servicios básicos. Portadores y teleservicios. Los servicios portadores ofrecen una capacidad de transporte en régimen síncrono/asíncrono en modocircuito o paquete con velocidades hasta 9600bps.Los teleservicios, o servicios ofrecidos por el ISP, son la telefonía digital a dos velocidades: total a 13kbps o mitad a 6,5kbps, los mensajes cortos y los facsímil, FAX del grupo 3. Algunos ejemplos de servicios suplementarios son, la identificación de llamante, redireccionamiento de llamadas, llamada en espera, buzón de voz, conferencias pluripartitas y la tarificación.
+% subsubsection serviciosGSM (end)
+\subsubsection{Tramas del sistema GSM}
+\label{ssub:tramaGSM}
+Cada trama básica del sistema GSM está constituida por 8 intervalos de 0,577ms durando la trama 4,615ms en total. Los enlaces descendentes y ascendentes para cada canal están decalados 3 timeslots pudiendo así usarse la misma antena para ambos enlaces. Cada ráfaga está compuesta por 148 bits. estos bits se organizan, como se puede ver en la imagen, de la siguiente forma.
+\begin{itemize}
+	\item 6 bits de cabecera (Tail Bits).
+	\item 116 bits de datos, de los cuales 2 son flags que indican si se trata de un mensaje TCH o FACCH.
+	\item 26 bits de entrenamiento para la estimación del canal y del equalizador.
+	\item Un tiempo de guarda equivalente a 8,25 bits. Para la sincronización entre los usuarios.
+\end{itemize} 
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{Imagen/tramaGSM.jpg}
+\caption{Estructura de una trama normal de datos de GSM}
+\label{img:tramaGSM}
+\end{figure}
+Con esta estructura se puede ver que la velocidad de transmisión del enlace radio del sistema GSM es: $\sfrac{156,25bits}{0,577ms}=270,833kbps$\\
+Para reducir la cantidad de señalización necesaria, las tramas se agrupan en multitramas, supertramas e incluso hipertramas. Las supertramas de 26 tramas se usan para los canales de tráfico, las de 51 tramas, en cambio, se usan para canales de señalización y control.
+% subsubsection tramaGSM (end)
+\subsubsection{Canales del sistema GSM}
+\label{ssub:canalesGSM}
+Los canales en GSM se dividen en canales de tráfico y canales de señalización. Los canales de tráfico siempre vienen definidos por el par de portadoras y timeslots asignados para la comunicación. Se han especificado 7 posibles canales de tráfico:
+\begin{itemize}
+	\item Voz a velocidad total (TCH/F)
+	\item Voz a velocidad mitad (TCH/H)
+	\item Datos a velocidad de 2,4, 4,8 y 9,6 kbps
+	\item Datos a velocidad mitad de 2,4 y 4,8 kbps
+\end{itemize}
+Estos canales tienen asociados dos canales de señalización, el SACCH y el FACCH. El Slow Associated Control Channel (SACCH) es el canal que transmite la señalización necesaria para mantener la llamada, como, control de potencia, calidad del canal, tarificación, etc. El Fast Associated Control Channel (FACCH) es el canal que transmite los mensajes urgentes relacionados con la llamada, como un traspaso de celda. El FACCH utiliza espacio del canal de información debido al carácter urgente de la información que se transmite en él. A parte hay otros canales de señalización descritos a continuación:
+\begin{itemize}
+	\item Canales de difusión, canales descendentes que transmiten a todos los terminales móviles informaciones varias.
+	\begin{itemize}
+		\item Broadcast Control CHannel (BCCH), transmite información general de la red y la celda para la orientación.
+		\item Frecuency Correction CHannel (FCCH), envía información precisa sobre las portadoras utilizadas por la MS.
+		\item Synchronization CHannel (SCH), difunde información sobre sincronización de trama e identificación de la BTS.
+	\end{itemize}
+	\item Canales comunes (CCH), se utilizan para regular el acceso al sistema de los terminales. Los hay ascendentes y descendentes.
+	\begin{itemize}
+		\item Random Acces CHannel (RACH), canal ascendente usado para la solicitud de recursos al sistema por parte de las MS. Utiliza el protocolo ALOHA ranurado para controlar el acceso múltiple de las MS al canal.
+		\item Paging CHannel (PCH), canal descendente por dodne se notifica a las MS  de una llamada destinada a la misma.
+		\item Access Grant CHannel (AGCH), canal descendente usado para la asignación de canales previamente solicitados por el RACH.
+	\end{itemize}
+	\item Los canales dedicados son canales bidireccionales que se asignan a las MS en exclusiva durante los momentos previos a la llamada.
+	\begin{itemize}
+		\item Stand-alone Dedicated Control CHannel (SDCCH), se divide en 8 canales vinculados a diferentes MS para el intercambio de información de señalización.
+		\item Slow Associated Control CHannel (SACCH), es el canal de señalización lenta asociada a la información transmitida por el SDCCH. está dividido en 8 cnanales vinculados a los 8 del SDCCH.
+	\end{itemize}
+\end{itemize}
+% subsubsection canalesGSM (end)
 % subsection GSM (end)
