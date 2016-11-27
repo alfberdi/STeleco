@@ -10,7 +10,7 @@ Se crean tres tecnologías que evolucionan de unas a otras:
 \subsubsection{Estándar GPRS}
 \label{ssub:GPRS}
 	GPRS nace de la necesidad de conectar el sistema GSM directamente a un backbone basado en IP que cada vez se extiende más. Es por esto que GPRS se considera más como un sistema de transición entre los sistemas de segunda generación, GSM, y los de tercera generación, UMTS. Las características principales del sistema GPRS son las siguientes: los datos se encapsulan en mensajes cortos con una cabecera del estilo a la cabecera IP, los recursos de red solo se utilizan cuando hay algo que transmitir, el principal objetivo es el acceso a redes de datos. GPRS reaprovecha las estructuras de GSM añadiendo unicamente dos elementos de red. El nodo GGSN actúa como una pasarela entre la red GPRS y las redes públicas de datos, como la red IP o incluso otras redes GPRS. El nodo SGSN es un servidor dentro de la propia red GSM para dar soporte a la llegada de datos.
-\begin{figure}[htp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Imagen/diaGPRS.jpg}
 \caption{Estructura de la red GPRS}
@@ -21,4 +21,20 @@ Se crean tres tecnologías que evolucionan de unas a otras:
 \label{ssub:3GPP}
 	Consorcio de grupos de estandarización para generar las especificaciones de UMTS. Está formado por grupos de todo el mundo, como el ETSI. 
 % subsubsection 3GPP (end)
+\subsubsection{UMTS}
+\label{ssub:UMTS}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Imagen/diaUMTS.jpg}
+\caption{Estructura de red del sistema UMTS}
+\label{img:UMTS}
+\end{figure}
+La red troncal del sistema UMTS es una evolución de la del sistema GPRS+GSM. Mantiene la separación de los dominios de paquetes y de circuitos aunque presenta una tendencia hacia el dominio único de datos. Se encarga del transporte de la información, tanto del tráfico como de la señalización.\\
+La red troncal también tiene toda la intelegincia del sistema, encaminamiento y control y gestión de la movilidad. La red troncal cuenta con los mismos elementos que su antecesora pero se denominan de forma diferente. El HLR, VLR, AuC, EIR y los centros de SMS son los únicos que mantienen su nombre original. Los elementos de ambos dominios MSC, GMSC, SGSN y GGSN pasan a denominarse igual pero con una U delante; U-MSC, U-GMSC, U-SGSN, U-GGSN.\\
+La red de acceso tiene una arquitectura similar a la de GSM, pero los elementos se han denominado de forma distinta. Las BTS han pasado a denominarse nodos B y los BSC han pasado a ser Radio Network Controller (RNC). La red de acceso a su vez ha cambiado de ser la BSS a ser la Radio Network System (RNS). Surge también una interfaz entre los RNC que no existía en GSM, que se denomina Iur. El acceso radio cambia de ser un sistema FDD/FDMA/TDMA a utilizar la tecnología CDMA. Esta tecnología utiliza espectro ensanchado para la transmisión de la información, es decir, todos los usuarios de la celda comparten la misma portadora de 5MHz utilizando distintos códigos para distinguir su señal. UMTS utiliza FDD o TDD para la duplexación, dependiendo de si el canal de subida está en otra portadora o en otro slot temporal será una o la otra.
+% subsubsection UMTS (end)
+\subsubsection{High Speed Downlink Packet Acces (HSDPA)}
+\label{ssub:HSDPA}
+
+% subsubsection HSDPA (end)
 % subsection UMTS (end)
