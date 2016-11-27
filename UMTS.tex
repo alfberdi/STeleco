@@ -1,4 +1,24 @@
 \subsection{Universal Mobile Telecommunication System (UMTS)}
 \label{sub:UMTS}
-
+UMTS se plantea cono una evolución de los sistemas GSM, ya que, los operadores desean proteger su inversión actual. Se plantea un sistema de versiones anuales, desde la primera versión, la Release 99 estable desde marzo del 2000, hasta la actual versión, Release 5, y las futuras, Release 6 y 7. UMTS surge ante la necesidad de: aumentar la capacidad de los servicios básicos de voz y añadir nuevos servicios de datos y multimedia basados en tecnologías de paquetes y protocolos IP. Se pretende ofrecer, 144kbps en entornos rurales, 348kbps en entornos urbanos alcanzando el máximo de 2Mbps en interiores. Otro punto inportante del planteamiento de UMTS es el aumento de la tecnología de roaming y la capacidad de crear terminales reconfigurables, que puedan aumentar sus capacidades mediante la descarga de servicios y aplicaciones.\\
+Se crean tres tecnologías que evolucionan de unas a otras:
+\begin{itemize}
+	\item Global Packet Radio Service (GPRS):permite el acceso radio en modo paquete con backbone IP. Incorpora dos nuevos nodos de conmutación de paquetes al sistema GSM. Permite la transmisión de datos hasta una tasa teórica de 144kbps. Permite la conexión de terminales que utilicen hasta 8 slots para la transmisión.
+	\item Enhanced Data rate for Global Evolution (EDGE): Se trata de una evolución del GPRS con modulación y codificación adaptativa. Necesita estaciones base y moviles modificados para utilizar este sistema. A cambio ofrece tasas de transmisión de hasta 384kbps.
+	\item EDGE Evolution: Este sistema consigue una gran cuota de mercado al ofrecer tasas de hasta 1Mbps, con modulaciones de hasta 32QAM y utilización de 10 slots de tiempo. Como contra necesita 2 antenas en los terminales y el uso de turbo códigos.
+\end{itemize}
+\subsubsection{Estándar GPRS}
+\label{ssub:GPRS}
+	GPRS nace de la necesidad de conectar el sistema GSM directamente a un backbone basado en IP que cada vez se extiende más. Es por esto que GPRS se considera más como un sistema de transición entre los sistemas de segunda generación, GSM, y los de tercera generación, UMTS. Las características principales del sistema GPRS son las siguientes: los datos se encapsulan en mensajes cortos con una cabecera del estilo a la cabecera IP, los recursos de red solo se utilizan cuando hay algo que transmitir, el principal objetivo es el acceso a redes de datos. GPRS reaprovecha las estructuras de GSM añadiendo unicamente dos elementos de red. El nodo GGSN actúa como una pasarela entre la red GPRS y las redes públicas de datos, como la red IP o incluso otras redes GPRS. El nodo SGSN es un servidor dentro de la propia red GSM para dar soporte a la llegada de datos.
+\begin{figure}[htp]
+\centering
+\includegraphics[width=\textwidth]{Imagen/diaGPRS.jpg}
+\caption{Estructura de la red GPRS}
+\label{img:estructuraGPRS}
+\end{figure}
+% subsubsection GPRS (end)
+\subsubsection{3rd Generation Pertnership Project 3GPP}
+\label{ssub:3GPP}
+	Consorcio de grupos de estandarización para generar las especificaciones de UMTS. Está formado por grupos de todo el mundo, como el ETSI. 
+% subsubsection 3GPP (end)
 % subsection UMTS (end)
