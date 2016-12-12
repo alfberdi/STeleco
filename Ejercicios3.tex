@@ -113,7 +113,12 @@ Sabiendo que cada dispositivo monitor (Mon) añade 0.6 dB de pérdidas, y el res
 	Convertidor de $\lambda$ (OC)	& 1dB\\\hline
 \end{tabular}
 \end{center}
-holi
+\textbf{1. Entrada y salida de la figura 2(a)}\\
+\[L_{AB}=6FC+2SPLR+5dB+2Mon=14,6dB\] 
+\textbf{2. A y B en el ADM óptico de la figura 2(b)}\\
+\[L_{AB}=2FC+1Demux+1OXC(through)+1Mux+1Splice-G_{AO}=-3.5\sfrac{dB}{canal}\]
+\textbf{3. A y C en el ADM óptico de la figura 2(b)}\\
+\[L_{AC}=2FC+1Demux+1OXC(Drop)+1Selector+1OC+3Splice-G_{AO}=2,4\sfrac{dB}{canal}\]
 \end{exercise}
 \begin{exercise}[9]
 	Se desea calcular la potencia total recibida en un sistema DWDM en el que hay 40 canales, y que se transmite en una fibra mono-modo que tiene una atenuación de 0.1dB/km, y una dispersión cromática de 0.5ps/nm·km y una dispersión por polarización de 0.12ps/$\sqrt{km}$. El sistema cuenta con 40 canales en la banda C, separados 100nm, y cada uno a 10Gbps. El transmisor, un laser, es capaz de acoplar 0dBm a la fibra con una precisión de f±20nm. Como receptor se tiene un diodo APD, que tiene una sensibilidad de -33dBm para obtener una BER de $10^{-9}$ . Las pérdidas del multiplexor/demultiplexor de paso son 7dB, mientras que las del de extracción son de 8dB. El amplificador tiene una ganancia de 0dB, en cada empalme se pierden 0.2dB y en cada conector 0.5dB. En los 80km de longitud del sistema, hay 4 conectores, 10 empalmes y se espera que en el futuro pueda haber 4 empalmes más. Además, se dejan 2dB de margen para otras degradaciones en el sistema.\\
