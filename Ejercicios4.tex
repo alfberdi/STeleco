@@ -1,4 +1,16 @@
 \subsection{Ejercicios}
 \label{sub:ejercicios4}
-
+\begin{exercise}[1]
+	Un sistema celular formado por clusters de 4 celdas hexagonales de 1.38 km de radio, dispone de 60 canales. El tráfico ofrecido por cada usuario es de 0.029 E, que corresponden a una llamada en media por HC. Se trata de un sistema dotado de colas de espera, con objetivo de que la probabilidad de que un usuario tenga que esperar sea menor o igual que el 5\%. Se pregunta: \\
+	\textbf{1.} ¿Cuántos usuarios por km2 puede soportar el sistema? \\
+	Suponiendo celdas unisectoriales, podemos ver que cada celda tendrá asignados $\frac{c}{J}=\frac{60}{4}=15\sfrac{canales}{celda}$ con este dato y la probabilidad de espera, $P_B=0,05$, se puede obtener el tráfico ofrecido a la celda gracias a la función Erlang C. 
+	\[C(c,A_o)=0,05\to A_o=8E\]
+	Con estos datos y sabiendo que el tráfico por usuario es $a_o=0.029E$ obtenemos:
+	\[N_{celda}=\frac{A_o}{a_o}=\frac{8}{0,029}=275\sfrac{usuarios}{celda}\]
+	Sabiendo los usuarios por celda y el tamaño de la celda, la densidad de usuarios tendrá que ser menor que D para permanecer dentro de las especificaciones del sistema:
+	\[D=\frac{N_{celda}}{S_{celda}}=\frac{275}{4.95km^2}=55,58\sfrac{usuarios}{km^2}\]
+	\textbf{2.} ¿Cuál es la probabilidad de que una llamada espere más de 10 segundos?
+	\[a_o=\frac{\lambda}{\mu}\to \mu=\frac{\lambda}{a_o}=\frac{1}{0,029}=34,48\sfrac{llamadas}{HC}=0.01\sfrac{llamadas}{s}\]
+	\[P(t\geq 10s)=e^{-\mu 10}=0,09\]
+\end{exercise}
 % subsection ejercicios4 (end)
