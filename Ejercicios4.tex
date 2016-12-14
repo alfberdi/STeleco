@@ -11,6 +11,53 @@
 	\[D=\frac{N_{celda}}{S_{celda}}=\frac{275}{4.95km^2}=55,58\sfrac{usuarios}{km^2}\]
 	\textbf{2.} ¿Cuál es la probabilidad de que una llamada espere más de 10 segundos?
 	\[a_o=\frac{\lambda}{\mu}\to \mu=\frac{\lambda}{a_o}=\frac{1}{0,029}=34,48\sfrac{llamadas}{HC}=0.01\sfrac{llamadas}{s}\]
-	\[P(t\geq 10s)=e^{-\mu 10}=0,09\]
+	\[P(t\geq 10s)=1-e^{-\mu 10}=0,09\]
+\end{exercise}
+\begin{exercise}[2]
+	Un sistema PMR de asignación troncal dispone de las siguientes bandas de frecuencia, dentro de la banda asignada: 380-382/390-392MHz, con canalización de 25kHz. Sobre cada portadora se establece una trama con cuatro intervalos de tiempo, sobre la que se realizará un acceso múltiple TDMA/FDMA. La velocidad binaria en la interfaz radio es de 30 kbps. Con este sistema se pretende prestar un servicio de gestión de flotas a una compañía que opera en el centro de Madrid, constituida por un total de 100 vehículos. Se estima que la gestión de la flota requiere cursar un tráfico de 0.7E en sentido despacho$\to$flota y 0.3E en sentido flota$\to$despacho, ambos en la hora cargada (utilizando canales de 7.5kbps en cada sentido). Se requiere operación full-duplex. Se pregunta:\\
+	\textbf{1.} ¿Cuántas portadoras es necesario habilitar para obtener un grado de servicio del 0.1 \%? Elija los valores de frecuencia\\
+	%Como la operación ha de ser full-duplex, y hay dos bandas bien diferenciadas, usaremos FDD para la duplexación.
+	%\[c=\frac{BW}{BW_{porta}}=\frac{2MHz}{25\sfrac{kHz}{portadora}}=80\text{ portadoras full duplex}\]
+	En este problema hay dos soluciones bien diferentes basadas en dos suposiciones: 
+	\begin{enumerate}
+		\item Si suponemos Que los tráficos del enunciado son por vehículo 
+		\item Si en cambio los suponemos tráficos totales
+	\end{enumerate}
+	Si suponemos lo primero:
+	\begin{gather*}
+		a_o=0,7+0,3=1E\\
+		A_o=N*a_o=100E\\
+		GoS=0,001=C(c,A_o)\to c\approx 200canales\\
+		\Delta f=c\frac{1}{4\sfrac{canales}{portadora}}25\sfrac{kHz}{portadora}=1,25MHz
+	\end{gather*}
+	En este caso las bandas utilizadas serían:380-381,25/390-391,25MHz.\\
+	Si en cambio suponemos tráficos totales:
+	\begin{gather*}
+		A_o=0,7+0,3=1E\\
+		GoS=0,001=C(c,A_o)\to c\approx 6canales\\
+		\Delta f=c\frac{1}{4\sfrac{canales}{portadora}}25\sfrac{kHz}{portadora}=50kHz
+	\end{gather*}
+	En este caso las bandas utilizadas serían:380-380,05/390-390,05MHz.\\
+	\textbf{2.} Obtenga el valor de la eficiencia de trunking (número de usuarios por canal)\\
+	Estamos en el mismo problema que antes, hay dos casos.\\
+	En el caso de ser tráfico por usuario:
+	\[\eta=\frac{N}{c}=\frac{100}{200}=0,5\sfrac{usuarios}{canal}\]
+	En el caso de ser tráficos totales:
+	\[\eta=\frac{N}{c}=\frac{100}{6}=16,67\sfrac{usuarios}{canal}\]
+	\textbf{3.} ¿Qué grado de servicio se obtendría si se utilizara asignación fija con el mismo número de usuarios por canal?
+	Estamos en el mismo problema que antes, hay dos casos.\\
+	En el caso de ser tráfico por usuario:
+	\begin{gather*}
+		A_o=a_o \eta=0.5E\\
+		GoS=0,5
+	\end{gather*}
+	Como se puede ver al pasar de trunking a asignación fija el grado de servicio baja al 50\%.\\
+	En el caso de ser tráficos totales:
+	\begin{gather*}
+		a_o=\frac{A_o}{N}=0.01E
+		A_o=a_o \eta=0.1667E\\
+		GoS=0,1667
+	\end{gather*}
+	Como se puede ver al pasar de trunking a asignación fija el grado de servicio baja al 16,67\%, no se ve una mejora tan inmensa como en el otro caso, pero sigue siendo considerable.\\
 \end{exercise}
 % subsection ejercicios4 (end)
