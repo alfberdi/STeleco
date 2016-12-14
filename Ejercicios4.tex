@@ -60,4 +60,29 @@
 	\end{gather*}
 	Como se puede ver al pasar de trunking a asignación fija el grado de servicio baja al 16,67\%, no se ve una mejora tan inmensa como en el otro caso, pero sigue siendo considerable.\\
 \end{exercise}
+\begin{exercise}[3]
+	Se desea competir por una licencia de telefonía celular en una ciudad de 4 millones de habitantes. El requisito principal es ofrecer servicio a un 20\% de la población con una probabilidad de bloqueo del 2\%. El ancho de banda asignado al servicio es de 4 MHz (a compartir en FDD) y se va a utilizar una modulación que requiere una relación de protección (S/I) de al menos 13 dB para funcionar correctamente en canales de 20 kHz. Se ha realizado un estudio de mercado y se prevé un perfil de usuarios que realizan una llamada de 2 minutos de duración cada hora. Estudiar cuál es el diseño más adecuado y el coste de la inversión del primer año, teniendo en cuanta que se estima un coste de los equipos de 48000€ por estación base y un precio medio del alquiler de los emplazamientos de 12000€ por estación base al año.\\
+	\begin{gather*}
+		P_B=2\%\\
+		c=\frac{BW}{BW_{canal}}=\frac{2MHz}{20\sfrac{kHz}{canal}}=100canales\\
+		a_o=\frac{\lambda}{\mu}=1\sfrac{llamada}{HC}\frac{1HC}{60min}2\sfrac{min}{llamada}=\frac{1}{30}E\\
+		\frac{S}{I}=10log(\frac{(sqrt{3J})^n}{i_0})=13dB\to J=(10^{\frac{S}{I}\frac{1}{10}}i_0)^{\frac{2}{n}}\frac{1}{3}\\
+		c_{sector}\leq\frac{c}{J*J_{\sfrac{sector}{celda}}}\\
+		A_{osector}=B^{-1}(c,P_B)\\
+		N_{sector}\leq\frac{A_{osector}}{a_o}\\
+		N_{celda}=N_{sector}J_{\sfrac{sector}{celda}}\\
+		N_{cluster}=N_{celda}*J\\
+		M_{cluster}\geq\frac{N}{N_{cluster}}\\
+		M_{BTS}=M_{cluster}J\\
+		Precio=M_{BTS}*(48000+12000)
+	\end{gather*}
+	\begin{tabular}{c|c|c|c|c|c|c|c|c}
+		Sectorización  	& $i_0$	& J & $c_{sector}$  & $A_{osector}$ & $N_{cluster}$ & $M_{cluster}$ 	& $M_{BTS}$ & Precio(M€) 	\\\hline
+		No sectorizada 	& 6	& 4 & 25	& 16	& 1920	& 417 & 1668 & 100,08	\\\hline
+		2 sectores		& 3	& 3 & 16	& 10	& 1800	& 445 & 1335 & 80,1		\\\hline
+		3 sectores		& 2	& 3 & 11	& 7.5	& 2025	& 396 & 1188 & 71,28	\\\hline
+		6 sectores		& 1	& 3 & 5		& 1.8	& 972	& 823 & 2469 & 148,14	\\\hline
+	\end{tabular}
+	De la tabla anterior podemos ver que la mejor opción es la instalación de antenas de tres sectores.
+\end{exercise}
 % subsection ejercicios4 (end)
