@@ -48,6 +48,24 @@ solucion
 \end{exercise}
 \begin{exercise}[5]
 	En el anillo de la figura, en el que se utiliza STM-16, se transmite el siguiente tráfico simétrico: 3VC4 entre A y D (circuitos 1 a 3), 1VC4 entre A y C (circuito 6), 1VC4 entre B y E (circuito 8), 2VC4 entre B y C (circuitos 1 y 2) y 2VC4 entre C y E (circuitos 4 y 5). Indique cómo quedaría el tráfico una vez se hayan roto las fibras entre D y E si se ha utilizado MS-SPring para proteger todo el tráfico.
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Imagen/ejercicio5tema3.jpg}
+	\caption{Anillo STM-16}
+	\end{figure}
+	\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+		   & 1  & 2  & 3  & 4  & 5  & 6  & 7  & 8  & 9  & 10 & 11 & 12 & 13 & 14 & 15 & 16 \\\hline
+		a1 &    &    &    &    &    &    &    & EB & AD & AD & AD & EC & EC & AC &    &    \\\hline
+		a2 &    &    &    &    &    &    &    & BE & DA & DA & DA & CE & CE & CA &    &    \\\hline
+		b1 & BC & BC &    &    &    &    &    &    & AD & AD & AD & EC & EC & AC &    &    \\\hline
+		b2 & CB & CB &    &    &    &    &    &    & DA & DA & DA & CE & CE & CA &    &    \\\hline
+		c1 &    &    &    & CE & CE & CA &    &    & AD & AD & AD & EC & EC & AC &    &    \\\hline
+		c2 &    &    &    & EC & CE & AC &    &    & DA & DA & DA & CE & CE & CA &    &    \\\hline
+		d1 &    &    &    &    &    &    &    &    &    &    &    &    &    &    &    &    \\\hline
+		d2 &    &    &    &    &    &    &    &    &    &    &    &    &    &    &    &    \\\hline
+		e1 & DA & DA & DA &    &    & CA &    & EB & AD & AD & AD & EC & EC & AC &    &    \\\hline
+		e2 & AD & AD & AD &    &    & AC &    & BE & DA & DA & DA & CE & CE & CA &    &    \\\hline
+	\end{tabular}
 \end{exercise}
 \begin{exercise}[6]
 	Decodifique y determine la secuencia de alineamiento del interfaz U de un acceso primario en el que se recibe la siguiente colección de bits sabiendo que los primeros 8 bits del canal número 3 son 00001000: ···-0+0-+-00+-000+-00-00+000-+00-+00+0-000-+-+000+-+-···\\
