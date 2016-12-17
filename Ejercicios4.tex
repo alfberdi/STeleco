@@ -87,4 +87,26 @@
 	\end{center}
 	De la tabla anterior podemos ver que la mejor opción es la instalación de antenas de tres sectores.
 \end{exercise}
+\begin{exercise}[5]
+	Trabaja en una consultora a la que le han pedido que calcule el grado de servicio en una zona urbana (ı́ndice de pérdidas igual a 4) de un operador de telefonía GSM que dispone de 42 pares de portadoras para ofrecer sus servicios. Para que el sistema funcione correctamente es necesario una relación de protección de 15 dB. Las celdas son hexagonales y están sectorizadas en 3 sectores. El radio de la celda es de 0.5 km. Para calcular el número de usuarios por celda no se va a tener en cuenta la densidad de la población, sino algo más realista como es la capacidad máxima de señalización de las estaciones base. Como sabe, el proceso de petición de llamadas se puede considerar que está basado en Aloha ranurado, en el que la capacidad es de 1.28 kbps y en el que cada intento produce un mensaje de 160 bits. Asuma que la eficiencia es la máxima posible, aunque luego solo tenga en cuenta el 10\% de los usuarios obtenidos dado que existen limitaciones en los canales de tráfico de las estaciones base. Se sabe que los usuarios realizan 2 llamadas en la hora cargada y además reciben 1 llamada en la hora cargada. También, que la probabilidad de que una llamada supere los 3 minutos es de 0,04978.\\ 
+	\textbf{CONSEJO:} Calcule el número de usuarios máximo por estación base. \\
+	\textbf{NOTA:} Asuma un canal de control por sector.\\
+	Para el cálculo del número de usuarios analizaremos el sistema ALOHA ranurado que se usa en el canal de control:
+	\begin{gather*}
+		S=I=0.36\\
+		a_0=\frac{160bits*3\sfrac{llamadas}{HC}}{3600\sfrac{s}{HC}=\frac{2}{15}E\\
+		C=1.28kbps\\
+		N'_{sector}=\frac{I*C}{a_0}=3456usuarios
+	\end{gather*}
+	Como Se pide que solo se tenga el 10\% de los usarios posibles $N_{sector}=345$. 
+	\begin{gather*}
+		\frac{S}{I}=10log(\frac{(sqrt{3J})^n}{i_0})\geq 15dB\\
+		J=7\sfrac{celdas}{cluster}\\
+		\frac{42portadoras}{J}\frac{1celda}{3sectores}8\sfrac{canales}{portadora}-1=15\sfrac{canales}{sector}\\
+		P(t\geq 3min)=1-e^{-\mu 3min}=0.04978 \to \mu=1.021\sfrac{llamadas}{min}\\
+		a_o=\frac{\lambda}{\mu}=\frac{3\sfrac{llamada}{HC}}{1.021\sfrac{llamadas}{min}}\frac{1}{60}=0.05E\\
+		A_o=a_oN_{sector}=17.25E\\
+		GoS=B(c,A_o)=0,25
+	\end{gather*}
+\end{exercise}
 % subsection ejercicios4 (end)
