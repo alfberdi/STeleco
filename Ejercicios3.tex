@@ -36,15 +36,15 @@ Estudiar de los dos tipos de modulación expuestas, cuál es más económica cum
 \end{exercise}
 \begin{exercise}[4]
 	Tenemos que cursar el tráfico correspondiente a 100 E1 entre dos ciudades separadas 10km, con una indisponibilidad anual de $<10^{-5}$ ; para ello vamos a establecer un sistema de telecomunicación básico en SDH. Se pide calcular la solución más económica que cubra las necesidades de servicio, considerando los siguientes costes:
-\begin{itemize}
-	\item Equipo SDH STM1: 7000€
-	\item Equipo SDH STM4: 17000€
-	\item Agregado óptico STM1: 12000€
-	\item Agregado óptico STM4: 12000€
-	\item Tendido de 10km de un par de fibra: 2000€
-	\item Indisponibilidad anual de un par de fibra: $10^{-3}$
-\end{itemize}
-solucion
+	\begin{itemize}
+		\item Equipo SDH STM1: 7000€
+		\item Equipo SDH STM4: 17000€
+		\item Agregado óptico STM1: 12000€
+		\item Agregado óptico STM4: 12000€
+		\item Tendido de 10km de un par de fibra: 2000€
+		\item Indisponibilidad anual de un par de fibra: $10^{-3}$
+	\end{itemize}
+	Como las fibras dan una indisponibilidad de $10^{-3}$ y se pide como requisito $10^{-5}$ habrá que duplicar los equipos necesarios. Si usamos STM1 entran en cada uno 63 contenedores c12 (E1), con lo cual necesitaremos, 2 sistemas STM1 completos. En un sentido: $((2*(7000+12000)+2000)*2)*2=160000€$ en cada sentido. Esto daría un total de 320000€ usando STM1. Si en cambio usamos STM4 vemos $(2*(17000+12000)+2000)*2=120000€$ es el precio en cada sentido. Esto daría un total de 240000€ usando STM4, siendo este un precio más competitivo.
 \end{exercise}
 \begin{exercise}[5]
 	En el anillo de la figura, en el que se utiliza STM-16, se transmite el siguiente tráfico simétrico: 3VC4 entre A y D (circuitos 1 a 3), 1VC4 entre A y C (circuito 6), 1VC4 entre B y E (circuito 8), 2VC4 entre B y C (circuitos 1 y 2) y 2VC4 entre C y E (circuitos 4 y 5). Indique cómo quedaría el tráfico una vez se hayan roto las fibras entre D y E si se ha utilizado MS-SPring para proteger todo el tráfico.
