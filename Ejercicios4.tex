@@ -66,7 +66,7 @@
 		P_B=2\%\\
 		c=\frac{BW}{BW_{canal}}=\frac{2MHz}{20\sfrac{kHz}{canal}}=100canales\\
 		a_o=\frac{\lambda}{\mu}=1\sfrac{llamada}{HC}\frac{1HC}{60min}2\sfrac{min}{llamada}=\frac{1}{30}E\\
-		\frac{S}{I}=10log(\frac{(sqrt{3J})^n}{i_0})=13dB\to J=(10^{\frac{S}{I}\frac{1}{10}}i_0)^{\frac{2}{n}}\frac{1}{3}\\
+		\frac{S}{I}=10log(\frac{(\sqrt{3J})^n}{i_0})=13dB\to J=(10^{\frac{S}{I}\frac{1}{10}}i_0)^{\frac{2}{n}}\frac{1}{3}\\
 		c_{sector}\leq\frac{c}{J*J_{\sfrac{sector}{celda}}}\\
 		A_{osector}=B^{-1}(c,P_B)\\
 		N_{sector}\leq\frac{A_{osector}}{a_o}\\
@@ -88,25 +88,44 @@
 	De la tabla anterior podemos ver que la mejor opción es la instalación de antenas de tres sectores.
 \end{exercise}
 \begin{exercise}[5]
-	Trabaja en una consultora a la que le han pedido que calcule el grado de servicio en una zona urbana (ı́ndice de pérdidas igual a 4) de un operador de telefonía GSM que dispone de 42 pares de portadoras para ofrecer sus servicios. Para que el sistema funcione correctamente es necesario una relación de protección de 15 dB. Las celdas son hexagonales y están sectorizadas en 3 sectores. El radio de la celda es de 0.5 km. Para calcular el número de usuarios por celda no se va a tener en cuenta la densidad de la población, sino algo más realista como es la capacidad máxima de señalización de las estaciones base. Como sabe, el proceso de petición de llamadas se puede considerar que está basado en Aloha ranurado, en el que la capacidad es de 1.28 kbps y en el que cada intento produce un mensaje de 160 bits. Asuma que la eficiencia es la máxima posible, aunque luego solo tenga en cuenta el 10\% de los usuarios obtenidos dado que existen limitaciones en los canales de tráfico de las estaciones base. Se sabe que los usuarios realizan 2 llamadas en la hora cargada y además reciben 1 llamada en la hora cargada. También, que la probabilidad de que una llamada supere los 3 minutos es de 0,04978.\\ 
-	\textbf{CONSEJO:} Calcule el número de usuarios máximo por estación base. \\
+	Trabaja en una consultora a la que le han pedido que calcule el grado de servicio en una zona urbana (índice de pérdidas igual a 4) de un operador de telefonía GSM que dispone de 42 pares de portadoras para ofrecer sus servicios. Para que el sistema funcione correctamente es necesario una relación de protección de 15 dB. Las celdas son hexagonales y están sectorizadas en 3 sectores. El radio de la celda es de 0.5 km. Para calcular el número de usuarios por celda no se va a tener en cuenta la densidad de la población, sino algo más realista como es la capacidad máxima de señalización de las estaciones base. Como sabe, el proceso de petición de llamadas se puede considerar que está basado en Aloha ranurado, en el que la capacidad es de 1.28 kbps y en el que cada intento produce un mensaje de 160 bits. Asuma que la eficiencia es la máxima posible, aunque luego solo tenga en cuenta el 10\% de los usuarios obtenidos dado que existen limitaciones en los canales de tráfico de las estaciones base. Se sabe que los usuarios realizan 2 llamadas en la hora cargada y además reciben 1 llamada en la hora cargada. También, que la probabilidad de que una llamada supere los 3 minutos es de 0,04978.\\ 
+	\textbf{CONSEJO:} Calcule el número de usuarios máximo por estación base. \\
 	\textbf{NOTA:} Asuma un canal de control por sector.\\
 	Para el cálculo del número de usuarios analizaremos el sistema ALOHA ranurado que se usa en el canal de control:
 	\begin{gather*}
 		S=I=0.36\\
-		a_0=\frac{160bits*3\sfrac{llamadas}{HC}}{3600\sfrac{s}{HC}=\frac{2}{15}E\\
+		a_0=\frac{160bits*3\sfrac{llamadas}{HC}}{3600\sfrac{s}{HC}}=\frac{2}{15}E\\
 		C=1.28kbps\\
 		N'_{sector}=\frac{I*C}{a_0}=3456usuarios
 	\end{gather*}
 	Como Se pide que solo se tenga el 10\% de los usarios posibles $N_{sector}=345$. 
 	\begin{gather*}
-		\frac{S}{I}=10log(\frac{(sqrt{3J})^n}{i_0})\geq 15dB\\
+		\frac{S}{I}=10log(\frac{(\sqrt{3J})^n}{i_0})\geq 15dB\\
 		J=7\sfrac{celdas}{cluster}\\
 		\frac{42portadoras}{J}\frac{1celda}{3sectores}8\sfrac{canales}{portadora}-1=15\sfrac{canales}{sector}\\
 		P(t\geq 3min)=1-e^{-\mu 3min}=0.04978 \to \mu=1.021\sfrac{llamadas}{min}\\
 		a_o=\frac{\lambda}{\mu}=\frac{3\sfrac{llamada}{HC}}{1.021\sfrac{llamadas}{min}}\frac{1}{60}=0.05E\\
-		A_o=a_oN_{sector}=17.25E\\
+		A_o=a_o N_{sector}=17.25E\\
 		GoS=B(c,A_o)=0,25
 	\end{gather*}
+	hola
+\end{exercise}
+\begin{exercise}[7]
+	La estación base de una celda de 50 km de radio situada en un entorno suburbano de un sistema celular analógico que funciona en una frecuencia de 900 MHz transmite una PIRE de 1 kW. La antena de dicha estación está situada a una altura de 100 m. Se desea estudiar la calidad del enlace para un móvil situado en en borde de la zona de cobertura de esta estación. Su antena está situada a una altura de 10 m y la ganancia del terminal es de 0 dB.\\ 
+	NOTA: Fórmulas de Okumura-Hata. Expresión del valor mediano de las pérdidas según Okumura-Hata (150 MHz - 1500 MHz):
+	\begin{gather*}
+		L_{50}(dB)=L_{50urban}(dB)-2(log(\frac{f_c}{28}))^2-5.4\\
+		L_{50urban}(dB)=69.55+26.16log(f_c)-13.82log(h_{tx})-a(h_{rx})+(44.9-6.55log(h_{tx}))log(d)\\
+		a(h_{rx})=(1.1log(f_c)-0.7)h_{rx}-(1.56log(f_c)-0.8)
+	\end{gather*}
+	Con $f_c$ en MHz, $h$ en m y $d$ en km
+	1. Calcule la potencia recibida en el móvil. Puede evaluar las pérdidas mediante la fórmula de Okumura-Hata\\
+	\begin{gather*}
+		a(h_{rx})=21.68\\
+		L_{50urban}(dB)=151.54dB\\
+		L_{50}(dB)=141.46dB\\
+		P_{rx}=PIRE+G_{MS}-L_{50}=-81.46dB=7.14mW
+	\end{gather*}
+	2. Si se requiere una relación de protección frente a la interferencia cocanal de 18 dB y la estación base de la celda cocanal más cercana (con idénticos parámetros a los de la estación base bajo estudio) se encuentra a una distancia de 200 km, determine cuál es el margen de seguridad en dB.
 \end{exercise}
 % subsection ejercicios4 (end)
