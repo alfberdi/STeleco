@@ -1,38 +1,50 @@
 \subsection{Ejercicios}
 \begin{exercise}[1]
-Se pretende unir Madrid con Barcelona mediante un enlace SDH-STM1 (155520 Mbps) que se va a rellenar con tramas E1(2048 kbps). Se quiere saber:\\
-\textbf{1.} ¿Qué tipo de contenedor se deberá utilizar?\\
-Una trama E1 se empaqueta exactamente en un contenedor C-12, que a su vez se empaqueta en un contenedor virtual VC-12.\\
-\textbf{2.} ¿Cuántas tramas E1 cabrían en un STM1?\\
-En una supertrama STM1 caben 63 contenedores C-12.
+	Se pretende unir Madrid con Barcelona mediante un enlace SDH-STM1 (155520 Mbps) que se va a rellenar con tramas E1(2048 kbps). Se quiere saber:\\
+	\textbf{1.} ¿Qué tipo de contenedor se deberá utilizar?\\
+	Una trama E1 se empaqueta exactamente en un contenedor C-12, que a su vez se empaqueta en un contenedor virtual VC-12.\\
+	\textbf{2.} ¿Cuántas tramas E1 cabrían en un STM1?\\
+	En una supertrama STM1 caben 63 contenedores C-12.
 \end{exercise}
 \begin{exercise}[2]
-Se dispone de un anillo de fibra óptica sobre el que se ha establecido una red SDH con enlaces a nivel jerárquico STM-16 entre tres ciudades: A, B y C. Queremos establecer el siguiente tráfico: A-B: 2VC4, A-C: 2VC4, B-C: 6VC4.\\
-1. ¿Cuál sería la protección a elegir si queremos proteger solo el tráfico entre A y B? Dibuje el esquema de protección utilizada\\
-2. ¿Cuál sería la protección a elegir si queremos proteger todo el tráfico? Dibuje el esquema de protección utilizada\\
+	Se dispone de un anillo de fibra óptica sobre el que se ha establecido una red SDH con enlaces a nivel jerárquico STM-16 entre tres ciudades: A, B y C. Queremos establecer el siguiente tráfico: A-B: 2VC4, A-C: 2VC4, B-C: 6VC4.\\
+	1. ¿Cuál sería la protección a elegir si queremos proteger solo el tráfico entre A y B? Dibuje el esquema de protección utilizada\\
+	2. ¿Cuál sería la protección a elegir si queremos proteger todo el tráfico? Dibuje el esquema de protección utilizada\\
 \end{exercise}
 \begin{exercise}[3]
-La compañía propietaria de los bucles de abonado de una población de 3500$\sfrac{habitantes}{km^2}$desea aprovechar esta infraestructura para prestar servicios multimedia asimétricos a un mercado potencial de usuarios que el departamento de Marketing estima en 100000. Un posible servicio a explotar requiere de una tasa de 4Mbps en sentido descendente y 16kbps en sentido ascendente. El departamento de I+D ofrece dos posibles tecnologías:
-\begin{itemize}
-	\item Modulación digital QPSK: se requiere una potencia en el receptor de 12dBm y el uso de ecualizador para evitar interferencias entre símbolos. Suponer una eficiencia espectral de 2 bps/Hz.
-	\item Modulación DMT: se requiere de una potencia en el receptor de 15 dBm sin ecualizador
-\end{itemize}
-Los precios de los ecualizadores son los siguientes:
-\begin{center}
-\begin{tabular}{|c c|}
-\hline
-	Ancho de banda(kHz) & Precio por unidad (€)\\\hline
-	500 & 6\\\hline
-	2000 & 120\\\hline
-	4000 & 300\\\hline
-\end{tabular}
-\end{center}
-Los equipos de terminación de línea de la central, situada en el centro de la población, proporcionan una potencia de 20 dBm a la línea. Las carcaterísticas de los pares de cobre empleados son las siguientes: calibre 0.405 mm, atenuación 2 dB/km. Se dispone de dos tipos de amplificadores, en función de la ganancia:
-\begin{itemize}
-	\item Tipo 1: G=3dB, 6€
-	\item Tipo 2: G=10dB, 60€
-\end{itemize}
-Estudiar de los dos tipos de modulación expuestas, cuál es más económica cumpliendo las especificaciones anteriores.
+	La compañía propietaria de los bucles de abonado de una población de 3500$\sfrac{habitantes}{km^2}$desea aprovechar esta infraestructura para prestar servicios multimedia asimétricos a un mercado potencial de usuarios que el departamento de Marketing estima en 100000. Un posible servicio a explotar requiere de una tasa de 4Mbps en sentido descendente y 16kbps en sentido ascendente. El departamento de I+D ofrece dos posibles tecnologías:
+	\begin{itemize}
+		\item Modulación digital QPSK: se requiere una potencia en el receptor de 12dBm y el uso de ecualizador para evitar interferencias entre símbolos. Suponer una eficiencia espectral de 2 bps/Hz.
+		\item Modulación DMT: se requiere de una potencia en el receptor de 15 dBm sin ecualizador
+	\end{itemize}
+	Los precios de los ecualizadores son los siguientes:
+	\begin{center}
+	\begin{tabular}{|c c|}
+	\hline
+		Ancho de banda(kHz) & Precio por unidad (€)\\\hline
+		500 & 6\\\hline
+		2000 & 120\\\hline
+		4000 & 300\\\hline
+	\end{tabular}
+	\end{center}
+	Los equipos de terminación de línea de la central, situada en el centro de la población, proporcionan una potencia de 20 dBm a la línea. Las carcaterísticas de los pares de cobre empleados son las siguientes: calibre 0.405 mm, atenuación 2 dB/km. Se dispone de dos tipos de amplificadores, en función de la ganancia:
+	\begin{itemize}
+		\item Tipo 1: G=3dB, 6€
+		\item Tipo 2: G=10dB, 60€
+	\end{itemize}
+	Estudiar de los dos tipos de modulación expuestas, cuál es más económica cumpliendo las especificaciones anteriores.\\
+	Suponemos que nuestra zona de cobertura es circular y suponemos un grado de penetración del 100\%
+	\begin{gather*}
+		S=\frac{100000usuarios}{3500\sfrac{usuarios}{km^2}}=28.57km^2\\
+		R=\sqrt{\frac{S}{\pi}}=3km\\
+	\end{gather*}
+	Calculamos la potencia recibida en el borde de nuestra zona de cobertura como:
+	\[P_{rx}=P_{tx}-\alpha R=20-3*2=14dBm\]
+	 Ahora habrá que ver que precio obtendríamos usando QPSK.
+	\[\frac{4Mbps}{2\sfrac{bps}{Hz}}=2MHz\]
+	Como vemos habrá que utilizar ecualizadores de 2000kHz tanto en transmisión como en recepción. Con esto, el precio de QPSK sería de 240€.\\
+	En DMT en cambio la sensibilidad es mayor que la potencia recibida, con lo cual habrá que amplificar la señal. Con el amplificador de menor ganacia ya es suficiente para el correcto funcionamiento del sistema ya que la potenciarecibida pasaría a ser 17dBm. Esto hace que el precio de dicho sistema sea de 12€.\\
+	Es evidente que la modulación elegida será DMT por razones económicas. $P_{QPSK}=240€> > P_{DMT}=12€$.
 \end{exercise}
 \begin{exercise}[4]
 	Tenemos que cursar el tráfico correspondiente a 100 E1 entre dos ciudades separadas 10km, con una indisponibilidad anual de $<10^{-5}$ ; para ello vamos a establecer un sistema de telecomunicación básico en SDH. Se pide calcular la solución más económica que cubra las necesidades de servicio, considerando los siguientes costes:
