@@ -115,10 +115,21 @@
 	\textbf{1.} Determine el número de multiplex MIC necesarios\\
 	\[N_{MIC}=\frac{B^{-1}(A_o,P_B)}{30}=4\text{ multiplex MIC}\]
 	\textbf{2.} Determine la longitud máxima de los tramos cuya atenuación puede ser compensada por los regeneradores\\
-	
+	\[S_{MAX}=\frac{42dB}{12\sfrac{dB}{km}}=3,5km\]
+	Hay que poner un regenador cada menos de 3,5km para que la señal se pueda recuperar.
 	\textbf{3.} ¿Cuántos pares son susceptibles de ser explotados en BF?\\
+	\[N_{BF}=N_{pares}-2*N_{MIC}-N_{supervision}=25-2*4-3=14\text{ pares para BF}\]
 	\textbf{4.} Determine la longitud de la sección de regeneración\\
-	\textbf{5.} Inversión inicial
+	\begin{gather*}
+		A_D(S_{min})\geq S_D\\
+		A_D(L)=A_D(L_0)+10log(\frac{S_{min}}{L_0}\geq 18dB\\
+		S_{min}\geq 1.99km\\
+		1.99km\leq S \leq 3.5km
+	\end{gather*}
+	Elegiremos un valor de span entre el mínimo de 1.99km y el máximo de 3.5km. Para reducir coste intentaremos elegir valores cercanos al máximo, 3.5km.
+	\textbf{5.} Inversión inicial\\
+	Si elegimos usar el valor de span máximo obtendríamos una inversión inicial de 96 millones de euros, Si en cambio cogemos el valor mínimo el precio ascendería a los 109 millones de euros.
+	\[Precio=2*Mux+2*ETL+35*(cable+postes)+\frac{35km}{S}repetidor\]
 \end{exercise}
 \begin{exercise}[8]
 	En las figuras (a) y (b) se muestran dos esquemáticos de sistemas ópticos, válidos para WDM, se le pide que calcule las pérdidas totales por inserción entre
