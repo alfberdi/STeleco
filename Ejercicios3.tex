@@ -74,38 +74,39 @@ Estudiar de los dos tipos de modulación expuestas, cuál es más económica cum
 \end{exercise}
 \begin{exercise}[7]
 	Se desea establecer un enlace RDSI entre dos ciudades que distan 35km e intercambian un tráfico de 102E, con el objetivo de que la probabilidad de pérdida de llamadas de los usuarios sea inferior al 1\%. Los circuitos necesarios se implementarán mediante multiplex MIC de norma europea. Se ha decidido tener una línea de postes con un único cable 25-CEF (25 pares con aislamiento de plástico de calibre 0.91 mm), que se utilizará para la transmisión en BF y MIC, cuyos parámetros a la frecuencia de 1024 kHz son:
-\begin{itemize}
-	\item Atenuación: $12\sfrac{dB}{km}$
-	\item Atenuación de diafonía para una longitud de 1km: 15dB
-\end{itemize}
-Se estima que el ruido térmico y de intermodulación se pueden despreciar frente a la diafonía y que la atenuación de diafonía en función de la longitud del cable se puede expresar como:
-\[A_D(L)=A_D(L_0)+10log(\frac{L}{L_0}\]
-Para las secciones de regeneración, se dispone de regeneradores de 42 dB de ganancia, con una sensibilidad a la diafonía de 18 dB. Se reservarán tres pares de cable para supervisión. El departamento de contabilidad de la compañía suministra los siguientes datos (miles de €):
-\begin{center}
-\begin{tabular}{c c c}
-	\hline
-	\textbf{Concepto} & \textbf{Mano de obra} & \textbf{Materiales}\\\hline
-	Mux digital (mux y demux) & 3 & 5,5\\
-	ETL (tx y rx) & 1,5 & 1,8\\
-	Tendido de 1km de cable & 0,35 & 0,5\\
-	Repetidor intermedio bidireccional & 1 & 0,8\\
-	Instalación de 1km de línea de postes & 0,6 & 0,12\\\hline
-\end{tabular}
-\end{center}
-Las secciones de regeneración se dispondrán siguiendo el esquema de la siguiente figura:
-\begin{figure}[htp]
-\centering
-\includegraphics[width=\textwidth]{Imagen/ejercicio7tema3.jpg}
-\caption{esquema de las secciones de regenaración}
-\end{figure}
-Nota: Para el cálculo de la diafonía se puede suponer que las señales del sistema perturbador y del perturbado tienen la misma potencia.\\
-Se pide:\\
-1. Determine el número de multiplex MIC necesarios\\
-2. Determine la longitud máxima de los tramos cuya atenuación puede ser compensada por los regeneradores\\
-3. ¿Cuántos pares son susceptibles de ser explotados en BF?\\
-4. Determine la longitud de la sección de regeneración\\
-5. Inversión inicial\\
-holi
+	\begin{itemize}
+		\item Atenuación: $12\sfrac{dB}{km}$
+		\item Atenuación de diafonía para una longitud de 1km: 15dB
+	\end{itemize}
+	Se estima que el ruido térmico y de intermodulación se pueden despreciar frente a la diafonía y que la atenuación de diafonía en función de la longitud del cable se puede expresar como:
+	\[A_D(L)=A_D(L_0)+10log(\frac{L}{L_0}\]
+	Para las secciones de regeneración, se dispone de regeneradores de 42 dB de ganancia, con una sensibilidad a la diafonía de 18 dB. Se reservarán tres pares de cable para supervisión. El departamento de contabilidad de la compañía suministra los siguientes datos (miles de €):
+	\begin{center}
+	\begin{tabular}{c c c}
+		\hline
+		\textbf{Concepto} & \textbf{Mano de obra} & \textbf{Materiales}\\\hline
+		Mux digital (mux y demux) & 3 & 5,5\\
+		ETL (tx y rx) & 1,5 & 1,8\\
+		Tendido de 1km de cable & 0,35 & 0,5\\
+		Repetidor intermedio bidireccional & 1 & 0,8\\
+		Instalación de 1km de línea de postes & 0,6 & 0,12\\\hline
+	\end{tabular}
+	\end{center}
+	Las secciones de regeneración se dispondrán siguiendo el esquema de la siguiente figura:
+	\begin{figure}[htp]
+	\centering
+	\includegraphics[width=\textwidth]{Imagen/ejercicio7tema3.jpg}
+	\caption{esquema de las secciones de regenaración}
+	\end{figure}
+	Nota: Para el cálculo de la diafonía se puede suponer que las señales del sistema perturbador y del perturbado tienen la misma potencia.\\
+	Se pide:\\
+	\textbf{1.} Determine el número de multiplex MIC necesarios\\
+	\[N_{MIC}=\frac{B^{-1}(A_o,P_B)}{30}=4\text{ multiplex MIC}\]
+	\textbf{2.} Determine la longitud máxima de los tramos cuya atenuación puede ser compensada por los regeneradores\\
+	
+	\textbf{3.} ¿Cuántos pares son susceptibles de ser explotados en BF?\\
+	\textbf{4.} Determine la longitud de la sección de regeneración\\
+	\textbf{5.} Inversión inicial
 \end{exercise}
 \begin{exercise}[8]
 	En las figuras (a) y (b) se muestran dos esquemáticos de sistemas ópticos, válidos para WDM, se le pide que calcule las pérdidas totales por inserción entre
