@@ -87,6 +87,46 @@
 	\end{center}
 	De la tabla anterior podemos ver que la mejor opción es la instalación de antenas de tres sectores.
 \end{exercise}
+\begin{exercise}[4]
+	Un sistema celular digital de telefonía móvil pública (PMT) que opera en una frecuencia de 900 MHz desea establecer una estación base en el interior de un centro comercial (entorno indoors LOS). La PIRE de dicha estación base es de 100W. Se desea estimar el tamaño de la zona de cobertura de esta célula. Para ello se ha especificado que un móvil situado en el borde de esta zona con una antena de ganancia 0 dB debe recibir una potencia superior a 10 dBm durante el 99\% del tiempo.\\
+	\textbf{NOTA:} Se ha medido las pérdidas de propagación a 1 m de la antena de la estación base y se ha obtenido un valor medio de 1 dB. El modelo log-normal tiene una expresión para las pérdidas de la siguiente forma:
+	\[L(d)=L(d_0)+10nlog(\frac{d}{d_0})\]
+	Si el valor de las pérdidas sufre variaciones entorno a la media de tipo log-normal, con desviación estándar $\sigma$, la probabilidad de que la potencia recibida sea superior a un valor $\gamma$ dado es: 
+	\[P(\overline{P_{rx}}\geq \gamma)=Q(\frac{\gamma-\overline{P_{rx}}}{\sigma})\]
+	siendo $\overline{P_{rx}}$ el valor medio de la potencia recibida\\
+	\textbf{1.} Calcule el radio de la zona de cobertura. Utilice el modelo log-normal con n=2,2 y considere que la desviación estándar de las pérdidas de propagación en este entorno es de $\sigma$=10dB.\\
+	\begin{gather*}
+		P_{rx}=P_{tx}+G_{tx}+G_{rx}-L\\
+		L(d)=L(d_0)+10nlog(\frac{d}{d_0})\\
+		P(\overline{P_{rx}}\geq 10dBm)=Q(\frac{\gamma-\overline{P_{rx}}}{\sigma})=0.99\\
+		Q(-x)=1-Q(x)\to x=-2.33\\
+		\frac{\gamma-\overline{P_{rx}}}{\sigma}=2.33\to \overline{P_{rx}}\geq 33.3dBm\\
+		\overline{P_{rx}}\geq 33.3dBm=PIRE-L\to L\leq 13.3dBm\\
+		R_{max}=5.17
+	\end{gather*}
+	\textbf{2.} Se desea transmitir datos 1 Mbps utilizando una modulación GMSK-0.25. Considerando que la potencia recibida por el móvil en el borde de la zona de cobertura es la que se especificó para el 99\% del tiempo (10 dBm) y que la conversión de RF a banda base en el receptor del móvil no introduce pérdidas, calcule la relación $\sfrac{E_b}{N_0}$, sabiendo que la potencia de ruido medida en la banda base es de $5*10^{-4}$W\\
+	\begin{gather*}
+		N_0=5*10^{-4}W\\
+		\frac{E_b}{N_0}=10log(\frac{S}{N}BT)=7dB
+	\end{gather*}
+	\textbf{3.} ¿Qué probabilidad de error (BER) se obtiene en estas condiciones? \\
+	\[BER=Q(\sqrt{2\gamma\frac{E_b}{N_0}})=Q(2.61)=4.5*10^{-3}\]
+	\textbf{4.} El sistema utiliza un esquema de multiacceso FDMA/FDD en la banda de frecuencias de 890-915MHz MS$\to$BS, y 935-960MHz BS$\to$MS. si no se dejan frecuencias de guarda en los extremos de la banda, ¿de cuántos canales duplex se dispone?\\
+	Si las dos bandas no fuesen iguales sería más beneficioso usar TDD que FDD ya que se podría utilizar todas las frecuencias. En este caso al ser las dos bandas iguales da igual que método de duplexación apliquemos.
+	\begin{gather*}
+		B=R_bBT=250\sfrac{kHz}{canal}\\
+		c=\frac{25MHz}{250\sfrac{kHz}{canal}}=100\text{ canales duplex}
+	\end{gather*}
+	\textbf{5.} Esta estación base tiene adjudicados el 10\% de los canales disponibles. Se estima que los móviles van a realizar una llamada por hora cargada, con una duración media de 1 minuto y se desea obtener un grado de servicio GoS del 2\%. ¿A cuántos móviles puede atender la estación base?\\
+	\begin{gather*}
+	\lambda=1\sfrac{llamada}{HC}\\
+	E(s)=1\sfrac{minuto}{llamada}\\
+	a_o=E(s)\lambda=0.0167E\\
+	GoS=P_B=2\%=B(c,A_o)\\
+	A_o=5E\\
+	M_{BS}=\frac{A_o}{a_o}=\frac{5}{0.0167}=300\sfrac{usuarios}{BS}
+\end{gather*}
+\end{exercise}
 \begin{exercise}[5]
 	Trabaja en una consultora a la que le han pedido que calcule el grado de servicio en una zona urbana (índice de pérdidas igual a 4) de un operador de telefonía GSM que dispone de 42 pares de portadoras para ofrecer sus servicios. Para que el sistema funcione correctamente es necesario una relación de protección de 15 dB. Las celdas son hexagonales y están sectorizadas en 3 sectores. El radio de la celda es de 0.5 km. Para calcular el número de usuarios por celda no se va a tener en cuenta la densidad de la población, sino algo más realista como es la capacidad máxima de señalización de las estaciones base. Como sabe, el proceso de petición de llamadas se puede considerar que está basado en Aloha ranurado, en el que la capacidad es de 1.28 kbps y en el que cada intento produce un mensaje de 160 bits. Asuma que la eficiencia es la máxima posible, aunque luego solo tenga en cuenta el 10\% de los usuarios obtenidos dado que existen limitaciones en los canales de tráfico de las estaciones base. Se sabe que los usuarios realizan 2 llamadas en la hora cargada y además reciben 1 llamada en la hora cargada. También, que la probabilidad de que una llamada supere los 3 minutos es de 0,04978.\\ 
 	\textbf{CONSEJO:} Calcule el número de usuarios máximo por estación base. \\
