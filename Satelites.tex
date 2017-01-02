@@ -39,5 +39,49 @@
 			\item Estación terrena de recepción: Hace uso de un recptor superheterodino, receptor de ondas de radio que utiliza un proceso de mezcla de frecuencias o heterodinación para convertir la señal recibida en una a frecuencia intermedia. Esta señal sin la radioportadora de alta frecuencia es mucho más facil de manejar que la original.
 			\item Segmento espacial: La suma de los retardos en los enlaces, en transmisión, en recepción y en el satélites terminan produciendo grandes retardos, 250ms en geoestacionarios. Este hecho hace necesario el uso de técnicas de cancelación de ecos.
 		\end{itemize}
+		El diseño de estos sistemas de comunicación satélite tiene que tener en cuenta los siguientes aspectos:
+		\begin{itemize}
+			\item Órbita: En la mayoría de las ocasiones se utiliza una órbita geoestacionaria. Para comunicaciones móviles se empiezan a utilizar órbitas meo y leo para reducir el retardo y la potencia transmitida.
+			\item Cobertura: Se pueden usar varios transpondedores para poder conformar un haz de diferente tipo y anchura.
+			\item Conectividad: Capacidad de establecer enlaces entre estaciones terrenas. 
+			\item Técnicas de acceso múltiple para la compartición del satélite. Se suelen utilizar FDMA y TDMA, en algunas ocasiones se puede utilizar CDMA pero supone un gran problema.
+			\item Banda de frecuencia y ancho de banda: Se utilizan diferentes bandas según el servicio y la disponibilidad necesitada. Las bandas a mayor frecuencia han de transmitir más potencia para superar la peor propagación. Para aumentar la reutilización se separan haces de la misma frecuencia polarizandolos opuestos. Para aumentar aún más la eficiencia se mejoran el tratamiento de la señal y las modulaciones.
+			\item Potencia: Se busca un compromiso entre la distancia a recorrer y la limitación a bordo del satélite. Una nueva limitación es la interferencia con otros satélites y estaciones terrenas.
+		\end{itemize}
 	% subsubsection estructSat (end)
+	\subsubsection{Órbitas}
+	\label{ssub:orbitas}
+		Las óbitas se basan en las leyes de Kepler, consecuencia de la ley de gravitación universal. La elección de la órbita depende del tipo de cobertura, aplicación o recursos económicos. Las órbitas disponibles son escasas. Existen dos tipos de órbitas, las geoestacionarias y las oblícuas. Las órbitras geoestacionarias (GEO) son órbitas circulares, en una latitud baja, inclinación nula y un periodo de revolución igual al ciclo terrestre. Estos satélites siempre son visibles y no requieren, teoricamente, de un seguimiento. En las órbitas oblicuas, en cambio, el seguimiento ha de ser continuo, ya que el satélite sale y se pone. Dependiendo de la altura de la órbita puede ser: baja (LEO), media (MEO) o alta (HEO). Tanto los LEO como los MEO son más baratos de lanzar que los GEO.\\
+		Las ventajas de las órbitas de tipo geoestacionaria son, la gran superficie de cobertura y permiten la existencia de estaciones terrenas fijas. Las mayores desventajas son la potencia necesaria para la transmisión, las antenas necesarias, los retardos, los lanzamientos de alto coste y la imposibilidad que presentan de cubrir latitudes altas.
+		La órbita geoestacionaria viene definida por la siguiente formula, tomando los siguientes valores. $\omega=\frac{2\pi}{T}$ para un periodo de rotación T=23h 56min.
+		\[G\frac{Mm}{d^2}=md\omega^2\]
+		De esta formula y teniendo en cuenta un radio de la tierra de 6366km, se obtiene una distancia a la superficie de la tierra de 35806km.\\
+		La cobertura del satélite tiene dos formas, la cobertura geométrica es la cobertura real que ofrece el satélite, esta es diferente de la cobertura radioeléctrica. La cobertura radioélectrica es igual a la geométrica pero tiene en cuenta el ruido terrestre y los obstáculos físicos, es decir es una cobertura real.
+	% subsubsection orbitas (end)
+	\subsubsection{Distancias satelitales}
+	\label{ssub:distSatelite}
+		Las coordenadas cartesianas del satélite son las siguientes: 
+		\begin{gather*}
+			x_s=R+h\\
+			y_s=0\\
+			z_s=0
+		\end{gather*}
+		Las coordenadas de la estación terrena, en cambio:
+		\begin{gather*}
+			x_e=Rcos\phi cos\lambda\\
+			y_e=Rsin\phi cos\lambda\\
+			z_e=Rsin\lambda
+		\end{gather*}
+		Los ángulos $\phi$ y $\lambda$ son longitud y latitud. $\phi$ se calcula como la diferencia entre la longitud del satélite y la longitud de la estación terrena. $\phi_l=\phi_s-\phi_e$. El ángulo $\lambda$ es la latitud de la estación terrena, ya que, la latitud del satélite, al estar sobre el ecuador es 0.\\
+		La distancia entre el satélite y la estación terrena se puede calcular por medio de una simple regla de pitagoras:
+		\[ES=d=\sqrt{(x_s-x_e)^2+y_e^2+z_e^2}=\sqrt{(R+h)^2+R^2-2R(R+h)cos\phi cos\lambda}\]
+	% subsubsection distSatelite (end)
+	\subsubsection{Balance de Enlace}
+	\label{ssub:balance}
+		Es el calculo de potencias que permite determinar la calidad de un enlace. El balance del enlace se puede generalizar con la siguiente formula.
+		\[\frac{c}{N_0}=P_{tx}+G_{tx}+\frac{G_{rx}}{T}-L-BO-10logKB\]
+		De la fórmula sabemos que T es la temperatura del receptor, K es la constante de Boltzman, B el ancho de banda del canal, L son las pérdidas del enlace, BO es el Back-Off. El back-Off se diferencia en: Input Back-Off para el sentido ascendente y Output Back-Off para el descendente, IBO y OBO. El factor de calidad del enlace es el cociente entre la ganancia y temperatura del receptor.\\
+		La calidad del enlace para enlaces digitales se calcula de la siguiente forma:
+		\[\frac{e_b}{n_0}=\frac{c}{n_0}\frac{1}{R_b}\]
+	% subsubsection balance (end)
 % section satelite (end)
