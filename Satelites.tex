@@ -119,7 +119,51 @@
 		\end{equation}
 	% subsection balance (end)
 	\subsection{Redes Very Small Aperture Terminals (VSAT)}
-\label{sub:vsat}
-	Redes de comunicaciones por satélite que proporcionan servicios FSS y que utilizan estaciones pequeñas en las instalaciones del usuario. Proporcionan conexiones entre terminales remotos y una estación terminal (HUB). Los sistemas VSAT tienen como principales ventajas el acceso a puntos remotos, una gran calidad, facilidad de crecimiento de la red, adaptatividad y unos costes bajos de realización
-% subsection vsat (end)
+	\label{sub:vsat}
+		Redes de comunicaciones por satélite que proporcionan servicios FSS y que utilizan estaciones pequeñas en las instalaciones del usuario. Proporcionan conexiones entre terminales remotos y una estación terminal (HUB). Los sistemas VSAT tienen como principales ventajas el acceso a puntos remotos, una gran calidad, facilidad de crecimiento de la red, adaptatividad y unos costes bajos de realización.
+		\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{Imagen/diavsat.jpg}
+		\caption{Diagrama de una red VSAT}
+		\end{figure}
+		El enlace inbound se define como el enlace en sentido terminal remoto$\to$HUB pasando por el satélite. El sentido outbound al ser un sistema multicast desde un único punto se utiliza duplexación o en tiempo(TDM) o en frecuencia(FDM). El sentido inbound es el único que utiliza técnicas de multiplexación. Estas técnicas pueden permitir el acceso aleatorio con aloha, aloha ranurado, la asignación bajo demanda de los recursos, o incluso la asignación fija de recursos. La utilización de las diferentes formas de asignación variarán dependiendo de la conformación del tráfico utilizado, rafagas cortas, tráfico interno o tráfico continuo.
+	% subsection vsat (end)
+	\subsection{Comunicaciones móviles por satélite}
+	\label{sub:satMovil}
+		En comunicaciones móviles por satélite se utilizan dos tipos de órbita, de baja altura o geoestacionarios. Los costes son menores en órbita baja pero la cobertura en los polos se hace imposible.\\
+		El campo de visión de la superficie terrestre es limitado en órbitas bajas, con lo cual hace falta gran cantidad de satélites organizados para dar una cobertura ancha. Las órbitas LEO pueden ser circulares o elípticas, polares o inclinadas. Para el cálculo de las características de las órbitas LEO supondremos órbitas circulares, el radio de la tierra lo supondremos 6377km, el radio de la órbita lo definiremos como a y la constante de keppler $k=Gm_E=3.98601352*10^5\sfrac{km^3}{seg^2}$.
+		\begin{equation}
+			\tag{Velocidad lineal}
+			v_s=\sqrt{k(\frac{2}{r_E+h})}=\sqrt{\frac{k}{r_E+h}}
+		\end{equation}
+		\begin{equation}
+			\tag{Velocidad angular}
+			\omega_s=\frac{v_s}{r_E+h}=\sqrt{\frac{k}{(r_E+h)^3}}
+		\end{equation}
+		Esto nos da un periodo orbital de:
+		\begin{equation}
+			\tag{Periodo orbital}
+			T_s=2\pi\sqrt{\frac{(r_E+h)^3}{k}}
+		\end{equation}
+		Para calcular el angulo central en el borde de cobertura, el ángulo que forma el satélite con la estación terrena visto desde el centro de la tierra, se puede hacer en función del ángulo de elevación mínima.
+		\begin{equation}
+			\tag{Ángulo central}
+			\gamma=arccos(\frac{r_E}{r_E+h}cosEl)-El
+		\end{equation}
+		La distancia desde el borde de cobertura del satélite será la siguiente:
+		\begin{equation}
+			\tag{Distancia al satélite}
+			d=\sqrt{r_E^2+(r_E+h)^2-2r_E(r_E+h)cos\gamma}
+		\end{equation}
+		El área del casquete de cobertura nos permitirá calcular el número mínimo de satelites necesarios.
+		\begin{equation}
+			\tag{Número de satélites}
+			N=\frac{4\pi r_E^2}{S}=\frac{2}{1-cos\gamma}
+		\end{equation}
+	% subsection satMovil (end)
+	\subsection{Sistemas de navegación por satélite GPS}
+\label{sub:gps}
+	A partir de las distancias entre 3 satélites y el receptor, conocidas las posiciones de los satélites, se puede calcular la posición del receptor. La mayor parte del error se debe a la deriva existente entre el reloj del satélite y del receptor. Otras fuentes de error son los efectos de la propagación en las diferentes capas de la atmósfera.\\
+	Existen dos códigos diferenciados para la localización según la precisión necesaria. El código P y los códigos C/A. Los primeros, mucho más precisos, se utilizan en aplicaciones militares y los segundos en aplicaciones comerciales.
+% subsection gps (end)
 % section satelite (end)
