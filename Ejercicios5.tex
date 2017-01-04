@@ -1,4 +1,78 @@
 \subsection{Ejercicios}
 \label{sub:ejercicios5}
-
+\begin{exercise}[1]
+	La organización internacional INMARSAT propone diferentes estándares para ofrecer varios servicios marítimos de telecomunicación en banda L. El estándar A reúne las siguientes características:
+	\begin{itemize}
+		\item Satélite:
+		\begin{itemize}
+			\item Ganancia en el borde: 16dBi
+			\item Potencia transmitida: 10W en un ancho de banda de 2MHz (40 canales)
+			\item Temperatura de ruido del sistema: 500K
+		\end{itemize}
+		\item Estación marítima:
+		\begin{itemize}
+			\item Potencia transmitida: 10W
+			\item Antena de 2m de diámetro y 50\% de eficiencia
+			\item Relación G/T: -4$\sfrac{dB}{K}$
+		\end{itemize}
+		\item Enlaces:
+		\begin{itemize}
+			\item Estación costera: 4-6GHz
+			\item Estación marítima:1.5-1.6GHz
+		\end{itemize}
+	\end{itemize} 
+	DATOS: En la modulación FM, tenemos que $(\frac{S}{N})$,es la relación señal a ruido de la señal demodulada. Donde $p$ y $w$ son factores de ponderación débil en sistemas FM (las bandas altas sufren mayor atenuación). $\Delta_{eff}$ es la excursión efectiva de la señal y $f_m$ es la frecuencia base de la FM. $p+w=7.7dB$. Considere la banda base de la voz como frecuencia base, es decir $f_m=3400Hz$. Recuerde que $\Delta_{eff}=\frac{\delta_{fc}}{\sqrt{2}}$, y que $B_M=2(f_m+\Delta_{fc})$.\\
+	\textbf{1.} Obtenga la relación señal a ruido de la señal de voz demodulada en ambos enlaces. Suponga una distancia entre el satélite y la estación marítima de 38000 km.
+\end{exercise}
+\begin{exercise}[2]
+	Se desea diseñar una red VSAT bidereccional en estrella, apoyada en el satélite Hispasat (30 O), con funcionamiento en banda Ku. Tanto el Hub como las estaciones VSAT se encuentran en Madrid (40.5 N, 3.5 O).\\
+	Los anchos de banda de RF necesarios son 200kHz para el outbound y 50kHz para el inbound.\\
+	El enlace ascendente del Outbound se realiza a 14100MHz, mientras que el enlace descendente tiene lugar a 11800MHz. En el inbound, la frecuencia para el enlace ascendente es de 14300MHz y para el descendente 12000MHz. El satélite tiene una PIRE de 44dBW en un ancho de banda de 72MHz y una $\frac{G}{T}$ de 0$\sfrac{dB}{K}$. Tanto para el inbound como el outbound se utiliza la modulación QPSK. La tasa binaria es de 128kbps para el outbound mientras que es de 32kbps para inbound.
+	\begin{itemize}
+		\item Los parametros del HUB son:
+		\begin{itemize}
+			\item Potencia transmitida: 27dBW 
+			\item Pérdidas en los terminales: 2dB tanto en transmisión como en recepción
+			\item Antenas de 5m de diámetro y 70\% de eficiencia
+			\item Temperatura de ruido del sistema: 200K (después de las pérdidas en los terminales)
+		\end{itemize}
+		\item Los parámetros de las estaciones VSAT son:
+		\begin{itemize}
+			\item Potencia transmitida: 1W
+			\item Antena de 1m de diámetro y 65\% de eficiencia
+			\item Pérdidas en los terminales: 1dB tanto en transmisión como en recepción
+			\item Temperatura de ruido del sistema: 200K (después de las pérdidas en los terminales)
+		\end{itemize}
+	\end{itemize}
+	DATOS: Radio de la tierra: 6366km. Altura del satélite Hispasat: 35876km. En una QPSK, la probabilidad de error se calcula como $BER=Q(\sqrt{\frac{2e_b}{n_0}})$.\\
+	Se pide lo siguiente:\\
+	\textbf{1.} Para el enlace Outbound, determine la relación $\sfrac{C}{N}$ en el uplink y downlink\\ 
+	\textbf{2.} Determine la relación $\sfrac{E_b}{N_0}$ en el enlace Outbound y la probabilidad de error de bit que se obtiene \\
+	\textbf{3.} Repita los apartados anteriores para el enlace inbound
+\end{exercise}
+\begin{exercise}[3]
+	En un cierto sistema, un satélite GPS está situado en un punto P cuyas coordenadas cartesianas respecto de un sistema de referencia con origen en el centro de la Tierra son: $x_p=14913km;y_p=15000km;z_p=21298km$. Sabiendo que las pseudodistancias a dicho satélite medidas por una estación de control situada sobre el eje Y del sistema son: $R_{m1}=27566,59km$ con $f_1=1600MHz$ y $R_{m2}=27703,48km$ con $f_2=1200MHz$. Se pide:\\
+	\textbf{1.} Coordenadas de la estación de control \\
+	\textbf{2.} Pseudodistancias a la frecuencia $f_1$ por un receptor cuyas coordenadas son $x_r=6375km;y_r=5380km;z_r=6370km$, si el receptor tiene una deriva de 1$\mu$s
+\end{exercise}
+\begin{exercise}[4]
+	El sistema IRIDIUM proporciona servicios de telecomunicación a móviles mediante una constelación de 66 satélites distribuidos en 6 planos a 780km de altura. El ángulo mínimo de elevación es de 8.2º. Se garantiza un retardo mínimo de 2.6 ms y un retardo máximo de 8.22ms en cada sentido de la comunicación entre el móvil y el satélite. Las frecuencias utilizadas para los enlaces móvil-satélite son 1616-1626.5MHz tanto en el UL como en el DL. El sistema de acceso múltiple empleado es un esquema FDMA/TDMA/TDD, de forma que el ancho de banda de cada canal es de 1.2 kHz.\\
+	Se desea estudiar un servicio de transmisión de datos a 2.4kbps con modulación QPSK, considerando el valor medio de la elevación entre el mínimo y el máximo especificados. La PIRE del satélite por canal de datos es de -10 DBW, y el factor de mérito de los receptores es de -20dB/K.\\
+	\textbf{1.} Determine si se cumple la especificación de retardo máximo\\
+	\textbf{2.} Determine el número mínimo de satélites necesarios para garantizar el funcionamiento con el ángulo de elevación mínimo\\
+	\textbf{3.} Determine la distancia y el retardo entre un móvil y el satélite para el valor de elevación bajo estudio\\
+	\textbf{4.} Calcule la relaciónn portadora a ruido en el enlace descendente satélite-móvil para un único canal\\
+	\textbf{5.} Calcule la probabilidad de error de bit en el receptor del móvil
+\end{exercise}
+\begin{exercise}[5]
+	En una red VSAT ofrecida por el satélite HISPASAT 1D (30ºO) y 35685km de altura, el HUB está compuesto por un equipo que es capaz de dar servicio a 10 terminales VSAT y un amplificador de potencia cuya PIRE es de 20dBW y con un ancho de banda de 6MHz. La antena tiene unas dimensiones de 6 m de diámetro y una eficiencia del 85\%. La temperatura de ruido es de 250K.\\
+	El transpondedor utilizado para ofrecer el servicio por parte del satélite tiene un ancho de banda de 36MHz, una PIRE de 30dBW en toda la banda, un back-off de entrada de 3dB y uno de salida de 2dB. La antena utilizada es de 5 metros de diámetro, y una eficiencia del 95\%. La temperatura se puede considerar igual que la del HUB.\\
+	Por último, los terminales VSAT transmiten una potencia de 5 W utilizando una antena de 2 metros de diámetro y una eficiencia del 70\%. Como son terminales baratos, tienen unas pérdidas adicionales en recepción de 1dB y en transmisión de 2dB. La temperatura se puede asumir que es la misma que el HUB.\\
+	NOTA: Utilize 3 decimales de precisión. Para la modulación QPSK se puede asumir una eficiencia de 2bps/Hz y que la $BER=Q(\sqrt{\frac{2e_b}{n_0}})$. El radio equivalente de la tierra es de 6366 km.
+	La tasa binaria de las estaciones VSAT es de 400kbps bidireccionales. La modulación utilizada es QPSK tanto en el inbound como en el outbound. Las frecuencias son las siguientes: 1.5/13GHz para comunicación HUB-Satélite y 1.6/12GHz para satélite-VSAT. El sistema utiliza TDM/TDMA.\\
+	Se le pide que conteste razonadamente a las siguientes cuestiones referidas al outbound de una estación situada a 20º de longitud este con respecto al HUB, que está situado a 40.2ºN y 3.5ºO: 
+	\textbf{1.} La relación portadora a ruido\\
+	\textbf{2.} Calcule la probabilidad de error\\
+	\textbf{3.} ¿Cuál será la probabilidad de esperar a transmitir un paquete si la tasa total física del transpondedor del satélite que se utiliza es de 1.6Mbps y el tráfico que genera cada VSAT es de 0.25E? 
+\end{exercise}
 % subsection ejercicios5 (end)
