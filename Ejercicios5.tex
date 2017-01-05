@@ -47,8 +47,67 @@
 	DATOS: Radio de la tierra: 6366km. Altura del satélite Hispasat: 35876km. En una QPSK, la probabilidad de error se calcula como $BER=Q(\sqrt{\frac{2e_b}{n_0}})$.\\
 	Se pide lo siguiente:\\
 	\textbf{1.} Para el enlace Outbound, determine la relación $\sfrac{C}{N}$ en el uplink y downlink\\ 
+	El uplink del outbound:
+	\begin{gather*}
+		\phi=30º-3.5º=26.5º\\
+		(\frac{C}{N})=PIRE_{HUB}+\frac{G}{T}|_{sat}-L_b-OBO-10logKB\\
+		\lambda=\frac{c}{f}=\frac{3*10^8}{14.1*10^9}=0.021m\\
+		G_{tx}=10log\eta(\frac{\pi D}{\lambda})^2=55.93dB\\
+		PIRE_{HUB}=P_{tx}+G_{tx}-L_{tx}=80.93dB\\
+		d=\sqrt{(R_e+h)^2+R_e^2-2R_e(R_e+h)cos\phi cos\lambda}=37661.51km\\
+		L_b=20log(\frac{4\pi d}{\lambda})=207.6dB\\
+		OBO=0\\
+		10logKB=10log(1.38*10^{-23}*200*10^3)=-175.6dB\\
+		(\frac{C}{N})_{up}=49.47dB
+	\end{gather*}
+	El downlink del outbound, se utilizan los datos ya calculados $10logKB$, d y el output Back-Off (OBO):
+	\begin{gather*}
+		(\frac{C}{N})=PIRE_{sat}+\frac{G}{T}|_{vsat}-L_b-OBO-10logKB\\
+		PIRE_{sat}=PIRE+10log\frac{B}{B_{canal}}=18.44dB\\
+		\lambda=\frac{c}{f}=\frac{3*10^8}{11.8*10^9}=0.025m\\
+		\frac{G}{T}|_{vsat}=10log\eta(\frac{\pi D}{\lambda})^2-10logT=17.1\sfrac{dB}{K}\\
+		L_b=20log(\frac{4\pi d}{\lambda})=205.54dB\\
+		(\frac{C}{N})_{down}=5.6dB
+	\end{gather*}
 	\textbf{2.} Determine la relación $\sfrac{E_b}{N_0}$ en el enlace Outbound y la probabilidad de error de bit que se obtiene \\
-	\textbf{3.} Repita los apartados anteriores para el enlace inbound
+	\begin{gather*}
+		(\frac{e_b}{n_0})=\frac{c}{n}\frac{B}{R_b}\\
+		(\frac{e_b}{n_0})_{up}=51.4dB\\
+		(\frac{e_b}{n_0})_{down}=7.5dB\\
+		(\frac{e_b}{n_0})^{-1}=(\frac{e_b}{n_0})_{up}^{-1}+(\frac{e_b}{n_0})_{down}^{-1}=6.55dB\\
+		BER=Q(\sqrt{\frac{2e_b}{n_0}})=Q(3.62)=1.59*10^{-4}
+	\end{gather*}
+	\textbf{3.} Repita los apartados anteriores para el enlace inbound\\
+	El uplink del inbound:
+	\begin{gather*}
+		\phi=30º-3.5º=26.5º\\
+		(\frac{C}{N})=PIRE_{vsat}+\frac{G}{T}|_{sat}-L_b-IBO-10logKB\\
+		\lambda=\frac{c}{f}=\frac{3*10^8}{14.3*10^9}=0.02m\\
+		G_{tx}=10log\eta(\frac{\pi D}{\lambda})^2=42.05dB\\
+		PIRE_{vsat}=P_{tx}+G_{tx}-L_{tx}=41.05dB\\
+		L_b=20log(\frac{4\pi d}{\lambda})=207.5dB\\
+		OBO=0\\
+		10logKB=10log(1.38*10^{-23}*50*10^3)=-181.61dB\\
+		(\frac{C}{N})_{up}=9.5dB
+	\end{gather*}
+	El downlink del outbound, se utilizan los datos ya calculados $10logKB$, d y el input Back-Off (IBO):
+	\begin{gather*}
+		(\frac{C}{N})=PIRE_{sat}+\frac{G}{T}|_{HUB}-L_b-IBO-10logKB\\
+		PIRE_{sat}=PIRE+10log\frac{B}{B_{canal}}=12.41dB\\
+		\lambda=\frac{c}{f}=\frac{3*10^8}{12*10^9}=0.025m\\
+		\frac{G}{T}|_{HUB}=10log\eta(\frac{\pi D}{\lambda})^2-10logT=31.4\sfrac{dB}{K}\\
+		L_b=20log(\frac{4\pi d}{\lambda})=205.54dB\\
+		(\frac{C}{N})_{down}=5.6dB
+	\end{gather*}
+	Relación $\sfrac{E_b}{N_0}$ en el enlace Inbound
+	\begin{gather*}
+		(\frac{e_b}{n_0})=\frac{c}{n}\frac{B}{R_b}\\
+		(\frac{e_b}{n_0})_{up}=11.1dB\\
+		(\frac{e_b}{n_0})_{down}=152.7dB\\
+		(\frac{e_b}{n_0})^{-1}=(\frac{e_b}{n_0})_{up}^{-1}+(\frac{e_b}{n_0})_{down}^{-1}=10.35dB
+	\end{gather*}
+	El BER será:
+	\[BER=Q(\sqrt{\frac{2e_b}{n_0}})=Q(4.55)=2.68*10^{-6}\]
 \end{exercise}
 \begin{exercise}[3]
 	En un cierto sistema, un satélite GPS está situado en un punto P cuyas coordenadas cartesianas respecto de un sistema de referencia con origen en el centro de la Tierra son: $x_p=14913km;y_p=15000km;z_p=21298km$. Sabiendo que las pseudodistancias a dicho satélite medidas por una estación de control situada sobre el eje Y del sistema son: $R_{m1}=27566,59km$ con $f_1=1600MHz$ y $R_{m2}=27703,48km$ con $f_2=1200MHz$. Se pide:\\
