@@ -59,10 +59,35 @@
 	El sistema IRIDIUM proporciona servicios de telecomunicación a móviles mediante una constelación de 66 satélites distribuidos en 6 planos a 780km de altura. El ángulo mínimo de elevación es de 8.2º. Se garantiza un retardo mínimo de 2.6 ms y un retardo máximo de 8.22ms en cada sentido de la comunicación entre el móvil y el satélite. Las frecuencias utilizadas para los enlaces móvil-satélite son 1616-1626.5MHz tanto en el UL como en el DL. El sistema de acceso múltiple empleado es un esquema FDMA/TDMA/TDD, de forma que el ancho de banda de cada canal es de 1.2 kHz.\\
 	Se desea estudiar un servicio de transmisión de datos a 2.4kbps con modulación QPSK, considerando el valor medio de la elevación entre el mínimo y el máximo especificados. La PIRE del satélite por canal de datos es de -10 DBW, y el factor de mérito de los receptores es de -20dB/K.\\
 	\textbf{1.} Determine si se cumple la especificación de retardo máximo\\
+	\begin{gather*}
+		\gamma=arccos(\frac{R_e}{R_e+h}cosEl_{min})-El_{min}=19.95º\\
+		d_{max}=\sqrt{R_e^2+(R_e+h)^2-2R_e(R_e+h)cos\gamma}=2463.4km\\
+		\tau_{max}=\frac{d_{max}}{c}=\frac{2463.4km}{3*10^5\sfrac{km}{s}}=8.21ms
+	\end{gather*}
+Como 8.21ms es menor que el retardo máximo permitido de 8.22ms el sistema cumple con las especificaciones.\\
 	\textbf{2.} Determine el número mínimo de satélites necesarios para garantizar el funcionamiento con el ángulo de elevación mínimo\\
+	\[N\geq \frac{2}{1-cos\gamma}=33.3\]
+	Como no puede existir un tercio de satélite el número mínimo serán 34 satélites.\\
 	\textbf{3.} Determine la distancia y el retardo entre un móvil y el satélite para el valor de elevación bajo estudio\\
+	\begin{gather*}
+		El_{medio}=\frac{El_{max}-El_{min}}{2}=40.9º\\
+		\gamma=arccos(\frac{R_e}{R_e+h}cosEl_{medio})-El_{medio}=6.77º\\
+		d_{medio}=\sqrt{R_e^2+(R_e+h)^2-2R_e(R_e+h)cos\gamma}=1114.8km\\
+		\tau_{medio}=\frac{d_{medio}}{c}=3.72ms
+	\end{gather*}
 	\textbf{4.} Calcule la relaciónn portadora a ruido en el enlace descendente satélite-móvil para un único canal\\
-	\textbf{5.} Calcule la probabilidad de error de bit en el receptor del móvil
+	\begin{gather*}
+		(\frac{C}{N})=PIRE_{sat}+\frac{G}{T}|_{movil}-L_b-IBO-10logKB\\
+		\lambda=\frac{c}{f}=\frac{3*10^8}{(1626.5-0.6)*10^3}=0.1844m\\
+		L_b=20log(\frac{4\pi d_{medio}}{\lambda})=157.54dB\\
+		10logKB=10log(1.38*10^{-23}*1.2*10^3)=-197.81dB\\
+		(\frac{C}{N})=10.27dB
+	\end{gather*}
+	\textbf{5.} Calcule la probabilidad de error de bit en el receptor del móvil\\
+	\begin{gather*}
+		\frac{e_b}{n_0}=\frac{c}{n}\frac{B}{R_B}=10.64*\frac{1.2kHz}{2.4kbps}=5.32\\
+		BER=Q(\sqrt{\frac{2e_b}{n_0}})=Q(3.26)=5.77*10^{-4}
+	\end{gather*}
 \end{exercise}
 \begin{exercise}[5]
 	En una red VSAT ofrecida por el satélite HISPASAT 1D (30ºO) y 35685km de altura, el HUB está compuesto por un equipo que es capaz de dar servicio a 10 terminales VSAT y un amplificador de potencia cuya PIRE es de 20dBW y con un ancho de banda de 6MHz. La antena tiene unas dimensiones de 6 m de diámetro y una eficiencia del 85\%. La temperatura de ruido es de 250K.\\
