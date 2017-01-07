@@ -112,7 +112,23 @@
 \begin{exercise}[3]
 	En un cierto sistema, un satélite GPS está situado en un punto P cuyas coordenadas cartesianas respecto de un sistema de referencia con origen en el centro de la Tierra son: $x_p=14913km;y_p=15000km;z_p=21298km$. Sabiendo que las pseudodistancias a dicho satélite medidas por una estación de control situada sobre el eje Y del sistema son: $R_{m1}=27566,59km$ con $f_1=1600MHz$ y $R_{m2}=27703,48km$ con $f_2=1200MHz$. Se pide:\\
 	\textbf{1.} Coordenadas de la estación de control \\
-	\textbf{2.} Pseudodistancias a la frecuencia $f_1$ por un receptor cuyas coordenadas son $x_r=6375km;y_r=5380km;z_r=6370km$, si el receptor tiene una deriva de 1$\mu$s
+	Del enunciado vemos que la estación de control está situada sobre el eje Y con lo cual sus coordenadas X y Z serán 0.
+	\begin{gather*}
+		R_{m1}=R+\frac{A}{f_1^2}\to A=f_1^2(R_{m1}-R)\\
+		R_{m2}=R+\frac{f_1^2(R_{m1}-R)}{f_2^2}\\
+		(\frac{f_1^2}{f_2^2}-1)R=\frac{f_1^2}{f_2^2}R_{m1}-R_{m2}\\
+		(f_1^2-f_2^2)R=f_1^2R_{m1}-f_2^2R_{m2}\\
+		R=\frac{f_1^2R_{m1}-f_2^2R_{m2}}{f_1^2-f_2^2}=27390.59km\\
+		R^2=(X_p-X_c)^2+(Y_p-Y_c)^2+(Z_p-Z_c)^2\\
+		Y_c=Y_p-\sqrt{R^2-X_p^2-Z_p^2}=6382km
+	\end{gather*}
+	\textbf{2.} Pseudodistancias a la frecuencia $f_1$ por un receptor cuyas coordenadas son $x_r=6375km;y_r=5380km;z_r=6370km$, si el receptor tiene una deriva de 1$\mu$s\\
+	\begin{gather*}
+		R'=\sqrt{(X_p-X_r)^2+(Y_p-Y_r)^2+(Z_p-Z_r)^2}=19705km\\
+		\frac{A}{f_1^2}=R_{m1}-R=27566.59-27390.59=176km\\
+		\tau_c=c*1\mu s=3*10^8*1*10^-6=0.3km
+		R_{m1}'=R'+\frac{A}{f_1^2}+\tau_c=19881.3km@1600MHz
+	\end{gather*}
 \end{exercise}
 \begin{exercise}[4]
 	El sistema IRIDIUM proporciona servicios de telecomunicación a móviles mediante una constelación de 66 satélites distribuidos en 6 planos a 780km de altura. El ángulo mínimo de elevación es de 8.2º. Se garantiza un retardo mínimo de 2.6 ms y un retardo máximo de 8.22ms en cada sentido de la comunicación entre el móvil y el satélite. Las frecuencias utilizadas para los enlaces móvil-satélite son 1616-1626.5MHz tanto en el UL como en el DL. El sistema de acceso múltiple empleado es un esquema FDMA/TDMA/TDD, de forma que el ancho de banda de cada canal es de 1.2 kHz.\\
@@ -152,9 +168,9 @@ Como 8.21ms es menor que el retardo máximo permitido de 8.22ms el sistema cumpl
 	En una red VSAT ofrecida por el satélite HISPASAT 1D (30ºO) y 35685km de altura, el HUB está compuesto por un equipo que es capaz de dar servicio a 10 terminales VSAT y un amplificador de potencia cuya PIRE es de 20dBW y con un ancho de banda de 6MHz. La antena tiene unas dimensiones de 6 m de diámetro y una eficiencia del 85\%. La temperatura de ruido es de 250K.\\
 	El transpondedor utilizado para ofrecer el servicio por parte del satélite tiene un ancho de banda de 36MHz, una PIRE de 30dBW en toda la banda, un back-off de entrada de 3dB y uno de salida de 2dB. La antena utilizada es de 5 metros de diámetro, y una eficiencia del 95\%. La temperatura se puede considerar igual que la del HUB.\\
 	Por último, los terminales VSAT transmiten una potencia de 5 W utilizando una antena de 2 metros de diámetro y una eficiencia del 70\%. Como son terminales baratos, tienen unas pérdidas adicionales en recepción de 1dB y en transmisión de 2dB. La temperatura se puede asumir que es la misma que el HUB.\\
-	NOTA: Utilize 3 decimales de precisión. Para la modulación QPSK se puede asumir una eficiencia de 2bps/Hz y que la $BER=Q(\sqrt{\frac{2e_b}{n_0}})$. El radio equivalente de la tierra es de 6366 km.
+	NOTA: Utilize 3 decimales de precisión. Para la modulación QPSK se puede asumir una eficiencia de 2bps/Hz y que la $BER=Q(\sqrt{\frac{2e_b}{n_0}})$. El radio equivalente de la tierra es de 6366 km.\\
 	La tasa binaria de las estaciones VSAT es de 400kbps bidireccionales. La modulación utilizada es QPSK tanto en el inbound como en el outbound. Las frecuencias son las siguientes: 1.5/13GHz para comunicación HUB-Satélite y 1.6/12GHz para satélite-VSAT. El sistema utiliza TDM/TDMA.\\
-	Se le pide que conteste razonadamente a las siguientes cuestiones referidas al outbound de una estación situada a 20º de longitud este con respecto al HUB, que está situado a 40.2ºN y 3.5ºO: 
+	Se le pide que conteste razonadamente a las siguientes cuestiones referidas al outbound de una estación situada a 20º de longitud este con respecto al HUB, que está situado a 40.2ºN y 3.5ºO: \\
 	\textbf{1.} La relación portadora a ruido\\
 	\textbf{2.} Calcule la probabilidad de error\\
 	\textbf{3.} ¿Cuál será la probabilidad de esperar a transmitir un paquete si la tasa total física del transpondedor del satélite que se utiliza es de 1.6Mbps y el tráfico que genera cada VSAT es de 0.25E? 
