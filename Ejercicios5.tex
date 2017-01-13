@@ -1,4 +1,247 @@
 \subsection{Ejercicios}
 \label{sub:ejercicios5}
-
+\begin{exercise}[1]
+	La organización internacional INMARSAT propone diferentes estándares para ofrecer varios servicios marítimos de telecomunicación en banda L. El estándar A reúne las siguientes características:
+	\begin{itemize}
+		\item Satélite:
+		\begin{itemize}
+			\item Ganancia en el borde: 16dBi
+			\item Potencia transmitida: 10W en un ancho de banda de 2MHz (40 canales)
+			\item Temperatura de ruido del sistema: 500K
+		\end{itemize}
+		\item Estación marítima:
+		\begin{itemize}
+			\item Potencia transmitida: 10W
+			\item Antena de 2m de diámetro y 50\% de eficiencia
+			\item Relación G/T: -4$\sfrac{dB}{K}$
+		\end{itemize}
+		\item Enlaces:
+		\begin{itemize}
+			\item Estación costera: 4-6GHz
+			\item Estación marítima:1.5-1.6GHz
+		\end{itemize}
+	\end{itemize} 
+	DATOS: En la modulación FM, tenemos que $(\frac{S}{N})$,es la relación señal a ruido de la señal demodulada. Donde $p$ y $w$ son factores de ponderación débil en sistemas FM (las bandas altas sufren mayor atenuación). $\Delta_{eff}$ es la excursión efectiva de la señal y $f_m$ es la frecuencia base de la FM. $p+w=7.7dB$. Considere la banda base de la voz como frecuencia base, es decir $f_m=3400Hz$. Recuerde que $\Delta_{eff}=\frac{\delta_{fc}}{\sqrt{2}}$, y que $B_M=2(f_m+\Delta_{fc})$.\\
+	\textbf{1.} Obtenga la relación señal a ruido de la señal de voz demodulada en ambos enlaces. Suponga una distancia entre el satélite y la estación marítima de 38000 km.\\
+	Algunos datos son comunes a todos los enlaces:
+	\begin{gather*}
+		B_{canal}=\frac{B}{N}=\frac{2MHz}{40canales}=50kHz\\
+		10logKB=10log(1.38*10^{-23}*50*10^3)=-181.612dB
+	\end{gather*}
+	Primero calcularemos el enlace outbound, de la estación costera a la estación marítima. 
+	\begin{gather*}
+		\lambda=\frac{c}{f}=\frac{3*10^8}{6*10^9-25*10^3}=0.05m\\
+		G_{EC}=10log\eta(\frac{\pi D}{\lambda})^2=38.974dB\\
+		PIRE_{EC}=P_{ECtx}+G_{EC}=48.974dBW\\
+		\frac{G}{T}|_{sat}=G-10logT=-10.99dB\\
+		L_b=10log(\frac{4\pi d}{\lambda})^2=199.6dB\\
+		(\frac{C}{N})_{up}=PIRE_{EC}+\frac{G}{T}|_{sat}-L_b-OBO-10logKB=19.996dB
+	\end{gather*}
+	Downlink del enlace outbound:
+	\begin{gather*}
+		\lambda=\frac{c}{f}=\frac{3*10^8}{1.5*10^9+1.975*10^6}=0.1997m\\
+		PIRE_{sat}=P_{tx}-10log\frac{B}{B_{canal}}=-6.021dBW\\
+		L_b=10log(\frac{4\pi d}{\lambda})^2=187.572dB\\
+		(\frac{C}{N})_{down}=PIRE_{sat}+\frac{G}{T}|_{EM}-L_b-OBO-10logKB=-15.981dB
+	\end{gather*}
+	Para el enlace inbound el uplink será:
+	\begin{gather*}
+		\lambda=\frac{c}{f}=\frac{3*10^8}{1.6*10^9-25*10^3}=0.188m\\
+		G_{EM}=10log\eta(\frac{\pi D}{\lambda})^2=27.47dB\\
+		PIRE_{EM}=P_{EMtx}+G_{EM}=37.47dBW\\
+		\frac{G}{T}|_{sat}=G-10logT=-10.99dB\\
+		L_b=10log(\frac{4\pi d}{\lambda})^2=188.097dB\\
+		(\frac{C}{N})_{up}=PIRE_{EM}+\frac{G}{T}|_{sat}-L_b-IBO-10logKB=19.995dB
+	\end{gather*}
+	Downlink del enlace inbound:
+	\begin{gather*}
+		\lambda=\frac{c}{f}=\frac{3*10^8}{4*10^9+1.975*10^6}=0.075m\\
+		PIRE_{sat}=P_{tx}-10log\frac{B}{B_{canal}}=-6.021dBW\\
+		L_b=10log(\frac{4\pi d}{\lambda})^2=196.079dB\\
+		(\frac{C}{N})_{down}=PIRE_{sat}+\frac{G}{T}|_{EC}-L_b-IBO-10logKB=-24.488dB
+	\end{gather*}
+\end{exercise}
+\begin{exercise}[2]
+	Se desea diseñar una red VSAT bidereccional en estrella, apoyada en el satélite Hispasat (30 O), con funcionamiento en banda Ku. Tanto el Hub como las estaciones VSAT se encuentran en Madrid (40.5 N, 3.5 O).\\
+	Los anchos de banda de RF necesarios son 200kHz para el outbound y 50kHz para el inbound.\\
+	El enlace ascendente del Outbound se realiza a 14100MHz, mientras que el enlace descendente tiene lugar a 11800MHz. En el inbound, la frecuencia para el enlace ascendente es de 14300MHz y para el descendente 12000MHz. El satélite tiene una PIRE de 44dBW en un ancho de banda de 72MHz y una $\frac{G}{T}$ de 0$\sfrac{dB}{K}$. Tanto para el inbound como el outbound se utiliza la modulación QPSK. La tasa binaria es de 128kbps para el outbound mientras que es de 32kbps para inbound.
+	\begin{itemize}
+		\item Los parametros del HUB son:
+		\begin{itemize}
+			\item Potencia transmitida: 27dBW 
+			\item Pérdidas en los terminales: 2dB tanto en transmisión como en recepción
+			\item Antenas de 5m de diámetro y 70\% de eficiencia
+			\item Temperatura de ruido del sistema: 200K (después de las pérdidas en los terminales)
+		\end{itemize}
+		\item Los parámetros de las estaciones VSAT son:
+		\begin{itemize}
+			\item Potencia transmitida: 1W
+			\item Antena de 1m de diámetro y 65\% de eficiencia
+			\item Pérdidas en los terminales: 1dB tanto en transmisión como en recepción
+			\item Temperatura de ruido del sistema: 200K (después de las pérdidas en los terminales)
+		\end{itemize}
+	\end{itemize}
+	DATOS: Radio de la tierra: 6366km. Altura del satélite Hispasat: 35876km. En una QPSK, la probabilidad de error se calcula como $BER=Q(\sqrt{\frac{2e_b}{n_0}})$.\\
+	Se pide lo siguiente:\\
+	\textbf{1.} Para el enlace Outbound, determine la relación $\sfrac{C}{N}$ en el uplink y downlink\\ 
+	El uplink del outbound:
+	\begin{gather*}
+		\phi=30º-3.5º=26.5º\\
+		(\frac{C}{N})=PIRE_{HUB}+\frac{G}{T}|_{sat}-L_b-OBO-10logKB\\
+		\lambda=\frac{c}{f}=\frac{3*10^8}{14.1*10^9}=0.021m\\
+		G_{tx}=10log\eta(\frac{\pi D}{\lambda})^2=55.93dB\\
+		PIRE_{HUB}=P_{tx}+G_{tx}-L_{tx}=80.93dB\\
+		d=\sqrt{(R_e+h)^2+R_e^2-2R_e(R_e+h)cos\phi cos\lambda}=37661.51km\\
+		L_b=20log(\frac{4\pi d}{\lambda})=207.6dB\\
+		OBO=0\\
+		10logKB=10log(1.38*10^{-23}*200*10^3)=-175.6dB\\
+		(\frac{C}{N})_{up}=49.47dB
+	\end{gather*}
+	El downlink del outbound, se utilizan los datos ya calculados $10logKB$, d y el output Back-Off (OBO):
+	\begin{gather*}
+		(\frac{C}{N})=PIRE_{sat}+\frac{G}{T}|_{vsat}-L_b-OBO-10logKB\\
+		PIRE_{sat}=PIRE+10log\frac{B}{B_{canal}}=18.44dB\\
+		\lambda=\frac{c}{f}=\frac{3*10^8}{11.8*10^9}=0.025m\\
+		\frac{G}{T}|_{vsat}=10log\eta(\frac{\pi D}{\lambda})^2-10logT=17.1\sfrac{dB}{K}\\
+		L_b=20log(\frac{4\pi d}{\lambda})=205.54dB\\
+		(\frac{C}{N})_{down}=5.6dB
+	\end{gather*}
+	\textbf{2.} Determine la relación $\sfrac{E_b}{N_0}$ en el enlace Outbound y la probabilidad de error de bit que se obtiene \\
+	\begin{gather*}
+		(\frac{e_b}{n_0})=\frac{c}{n}\frac{B}{R_b}\\
+		(\frac{e_b}{n_0})_{up}=51.4dB\\
+		(\frac{e_b}{n_0})_{down}=7.5dB\\
+		(\frac{e_b}{n_0})^{-1}=(\frac{e_b}{n_0})_{up}^{-1}+(\frac{e_b}{n_0})_{down}^{-1}=6.55dB\\
+		BER=Q(\sqrt{\frac{2e_b}{n_0}})=Q(3.62)=1.59*10^{-4}
+	\end{gather*}
+	\textbf{3.} Repita los apartados anteriores para el enlace inbound\\
+	El uplink del inbound:
+	\begin{gather*}
+		\phi=30º-3.5º=26.5º\\
+		(\frac{C}{N})=PIRE_{vsat}+\frac{G}{T}|_{sat}-L_b-IBO-10logKB\\
+		\lambda=\frac{c}{f}=\frac{3*10^8}{14.3*10^9}=0.02m\\
+		G_{tx}=10log\eta(\frac{\pi D}{\lambda})^2=42.05dB\\
+		PIRE_{vsat}=P_{tx}+G_{tx}-L_{tx}=41.05dB\\
+		L_b=20log(\frac{4\pi d}{\lambda})=207.5dB\\
+		OBO=0\\
+		10logKB=10log(1.38*10^{-23}*50*10^3)=-181.61dB\\
+		(\frac{C}{N})_{up}=9.5dB
+	\end{gather*}
+	El downlink del outbound, se utilizan los datos ya calculados $10logKB$, d y el input Back-Off (IBO):
+	\begin{gather*}
+		(\frac{C}{N})=PIRE_{sat}+\frac{G}{T}|_{HUB}-L_b-IBO-10logKB\\
+		PIRE_{sat}=PIRE+10log\frac{B}{B_{canal}}=12.41dB\\
+		\lambda=\frac{c}{f}=\frac{3*10^8}{12*10^9}=0.025m\\
+		\frac{G}{T}|_{HUB}=10log\eta(\frac{\pi D}{\lambda})^2-10logT=31.4\sfrac{dB}{K}\\
+		L_b=20log(\frac{4\pi d}{\lambda})=205.54dB\\
+		(\frac{C}{N})_{down}=5.6dB
+	\end{gather*}
+	Relación $\sfrac{E_b}{N_0}$ en el enlace Inbound
+	\begin{gather*}
+		(\frac{e_b}{n_0})=\frac{c}{n}\frac{B}{R_b}\\
+		(\frac{e_b}{n_0})_{up}=11.1dB\\
+		(\frac{e_b}{n_0})_{down}=152.7dB\\
+		(\frac{e_b}{n_0})^{-1}=(\frac{e_b}{n_0})_{up}^{-1}+(\frac{e_b}{n_0})_{down}^{-1}=10.35dB
+	\end{gather*}
+	El BER será:
+	\[BER=Q(\sqrt{\frac{2e_b}{n_0}})=Q(4.55)=2.68*10^{-6}\]
+\end{exercise}
+\begin{exercise}[3]
+	En un cierto sistema, un satélite GPS está situado en un punto P cuyas coordenadas cartesianas respecto de un sistema de referencia con origen en el centro de la Tierra son: $x_p=14913km;y_p=15000km;z_p=21298km$. Sabiendo que las pseudodistancias a dicho satélite medidas por una estación de control situada sobre el eje Y del sistema son: $R_{m1}=27566,59km$ con $f_1=1600MHz$ y $R_{m2}=27703,48km$ con $f_2=1200MHz$. Se pide:\\
+	\textbf{1.} Coordenadas de la estación de control \\
+	Del enunciado vemos que la estación de control está situada sobre el eje Y con lo cual sus coordenadas X y Z serán 0.
+	\begin{gather*}
+		R_{m1}=R+\frac{A}{f_1^2}\to A=f_1^2(R_{m1}-R)\\
+		R_{m2}=R+\frac{f_1^2(R_{m1}-R)}{f_2^2}\\
+		(\frac{f_1^2}{f_2^2}-1)R=\frac{f_1^2}{f_2^2}R_{m1}-R_{m2}\\
+		(f_1^2-f_2^2)R=f_1^2R_{m1}-f_2^2R_{m2}\\
+		R=\frac{f_1^2R_{m1}-f_2^2R_{m2}}{f_1^2-f_2^2}=27390.59km\\
+		R^2=(X_p-X_c)^2+(Y_p-Y_c)^2+(Z_p-Z_c)^2\\
+		Y_c=Y_p-\sqrt{R^2-X_p^2-Z_p^2}=6382km
+	\end{gather*}
+	\textbf{2.} Pseudodistancias a la frecuencia $f_1$ por un receptor cuyas coordenadas son $x_r=6375km;y_r=5380km;z_r=6370km$, si el receptor tiene una deriva de 1$\mu$s\\
+	\begin{gather*}
+		R'=\sqrt{(X_p-X_r)^2+(Y_p-Y_r)^2+(Z_p-Z_r)^2}=19705km\\
+		\frac{A}{f_1^2}=R_{m1}-R=27566.59-27390.59=176km\\
+		\tau_c=c*1\mu s=3*10^8*1*10^-6=0.3km
+		R_{m1}'=R'+\frac{A}{f_1^2}+\tau_c=19881.3km@1600MHz
+	\end{gather*}
+\end{exercise}
+\begin{exercise}[4]
+	El sistema IRIDIUM proporciona servicios de telecomunicación a móviles mediante una constelación de 66 satélites distribuidos en 6 planos a 780km de altura. El ángulo mínimo de elevación es de 8.2º. Se garantiza un retardo mínimo de 2.6 ms y un retardo máximo de 8.22ms en cada sentido de la comunicación entre el móvil y el satélite. Las frecuencias utilizadas para los enlaces móvil-satélite son 1616-1626.5MHz tanto en el UL como en el DL. El sistema de acceso múltiple empleado es un esquema FDMA/TDMA/TDD, de forma que el ancho de banda de cada canal es de 1.2 kHz.\\
+	Se desea estudiar un servicio de transmisión de datos a 2.4kbps con modulación QPSK, considerando el valor medio de la elevación entre el mínimo y el máximo especificados. La PIRE del satélite por canal de datos es de -10 DBW, y el factor de mérito de los receptores es de -20dB/K.\\
+	\textbf{1.} Determine si se cumple la especificación de retardo máximo\\
+	\begin{gather*}
+		\gamma=arccos(\frac{R_e}{R_e+h}cosEl_{min})-El_{min}=19.95º\\
+		d_{max}=\sqrt{R_e^2+(R_e+h)^2-2R_e(R_e+h)cos\gamma}=2463.4km\\
+		\tau_{max}=\frac{d_{max}}{c}=\frac{2463.4km}{3*10^5\sfrac{km}{s}}=8.21ms
+	\end{gather*}
+Como 8.21ms es menor que el retardo máximo permitido de 8.22ms el sistema cumple con las especificaciones.\\
+	\textbf{2.} Determine el número mínimo de satélites necesarios para garantizar el funcionamiento con el ángulo de elevación mínimo\\
+	\[N\geq \frac{2}{1-cos\gamma}=33.3\]
+	Como no puede existir un tercio de satélite el número mínimo serán 34 satélites.\\
+	\textbf{3.} Determine la distancia y el retardo entre un móvil y el satélite para el valor de elevación bajo estudio\\
+	\begin{gather*}
+		El_{medio}=\frac{El_{max}-El_{min}}{2}=40.9º\\
+		\gamma=arccos(\frac{R_e}{R_e+h}cosEl_{medio})-El_{medio}=6.77º\\
+		d_{medio}=\sqrt{R_e^2+(R_e+h)^2-2R_e(R_e+h)cos\gamma}=1114.8km\\
+		\tau_{medio}=\frac{d_{medio}}{c}=3.72ms
+	\end{gather*}
+	\textbf{4.} Calcule la relaciónn portadora a ruido en el enlace descendente satélite-móvil para un único canal\\
+	\begin{gather*}
+		(\frac{C}{N})=PIRE_{sat}+\frac{G}{T}|_{movil}-L_b-IBO-10logKB\\
+		\lambda=\frac{c}{f}=\frac{3*10^8}{(1626.5-0.6)*10^3}=0.1844m\\
+		L_b=20log(\frac{4\pi d_{medio}}{\lambda})=157.54dB\\
+		10logKB=10log(1.38*10^{-23}*1.2*10^3)=-197.81dB\\
+		(\frac{C}{N})=10.27dB
+	\end{gather*}
+	\textbf{5.} Calcule la probabilidad de error de bit en el receptor del móvil\\
+	\begin{gather*}
+		\frac{e_b}{n_0}=\frac{c}{n}\frac{B}{R_B}=10.64*\frac{1.2kHz}{2.4kbps}=5.32\\
+		BER=Q(\sqrt{\frac{2e_b}{n_0}})=Q(3.26)=5.77*10^{-4}
+	\end{gather*}
+\end{exercise}
+\begin{exercise}[5]
+	En una red VSAT ofrecida por el satélite HISPASAT 1D (30ºO) y 35685km de altura, el HUB está compuesto por un equipo que es capaz de dar servicio a 10 terminales VSAT y un amplificador de potencia cuya PIRE es de 20dBW y con un ancho de banda de 6MHz. La antena tiene unas dimensiones de 6 m de diámetro y una eficiencia del 85\%. La temperatura de ruido es de 250K.\\
+	El transpondedor utilizado para ofrecer el servicio por parte del satélite tiene un ancho de banda de 36MHz, una PIRE de 30dBW en toda la banda, un back-off de entrada de 3dB y uno de salida de 2dB. La antena utilizada es de 5 metros de diámetro, y una eficiencia del 95\%. La temperatura se puede considerar igual que la del HUB.\\
+	Por último, los terminales VSAT transmiten una potencia de 5 W utilizando una antena de 2 metros de diámetro y una eficiencia del 70\%. Como son terminales baratos, tienen unas pérdidas adicionales en recepción de 1dB y en transmisión de 2dB. La temperatura se puede asumir que es la misma que el HUB.\\
+	NOTA: Utilize 3 decimales de precisión. Para la modulación QPSK se puede asumir una eficiencia de 2bps/Hz y que la $BER=Q(\sqrt{\frac{2e_b}{n_0}})$. El radio equivalente de la tierra es de 6366 km.\\
+	La tasa binaria de las estaciones VSAT es de 400kbps bidireccionales. La modulación utilizada es QPSK tanto en el inbound como en el outbound. Las frecuencias son las siguientes: 1.5/13GHz para comunicación HUB-Satélite y 1.6/12GHz para satélite-VSAT. El sistema utiliza TDM/TDMA.\\
+	Se le pide que conteste razonadamente a las siguientes cuestiones referidas al outbound de una estación situada a 20º de longitud este con respecto al HUB, que está situado a 40.2ºN y 3.5ºO: \\
+	\textbf{1.} La relación portadora a ruido\\
+	En ambos casos el ancho de banda será el mismo:
+	\[B_{canal}=\frac{B}{R}=\frac{400kbps}{2\sfrac{bps}{Hz}}=200kHz\]
+	Para el Uplink del enlace outbound:
+	\begin{gather*}
+		\lambda=40.2º\\
+		\phi=30º-3.5º=26.5º\\
+		d=\sqrt{(R_e+h)^2+R_e^2-2R_e(R_e+h)cos\lambda cos\phi}=37984.811km\\
+		\lambda=\frac{c}{f}=\frac{3*10^8}{13*10^9-100*10^3}=0.1m\\
+		PIRE_{HUB}=PIRE-10log\frac{B}{B_{canal}}=5.229dBW\\
+		(\frac{G}{T})_{sat}=10log\eta(\frac{\pi D}{\lambda})^2-10logT=19.72dB\\
+		L_b=10log(\frac{4\pi d}{\lambda}=193.576dB\\
+		10logKB=-195.591dB\\
+		(\frac{C}{N})_{up}=PIRE_{HUB}+(\frac{G}{T})_{sat}-L_b-OBO-10logKB=24.964dB
+	\end{gather*}
+	Para el downlink del enlace outbound:
+	\begin{gather*}
+		\lambda=40.2º\\
+		\phi=30º-23.5º=6.5º\\
+		d=\sqrt{(R_e+h)^2+R_e^2-2R_e(R_e+h)cos\lambda cos\phi}=37450.099km\\
+		\lambda=\frac{c}{f}=\frac{3*10^8}{1.6*10^9+1.9*10^6}=0.187m\\
+		PIRE_{sat}=PIRE-10log\frac{B}{B_{canal}}=7.447dBW\\
+		(\frac{G}{T})_{vsat}=10log\eta(\frac{\pi D}{\lambda})^2-10logT=4.998dB\\
+		L_b=10log(\frac{4\pi d}{\lambda}=188.016dB\\
+		10logKB=-195.591dB\\
+		(\frac{C}{N})_{down}=PIRE_{HUB}+(\frac{G}{T})_{sat}-L_b-OBO-10logKB=18.02dB
+	\end{gather*}
+	\textbf{2.} Calcule la probabilidad de error\\
+	\begin{gather*}
+		(\frac{e_b}{n_0})_{up}=(\frac{C}{N})_{up}\frac{B}{R_b}=156.809=21.954dB\\
+		(\frac{e_b}{n_0})_{down}=(\frac{C}{N})_{down}\frac{B}{R_b}=31.693=15.01dB\\
+		(\frac{e_b}{n_0})_{outbound}=((\frac{e_b}{n_0})_{up}^{-1}+(\frac{e_b}{n_0})_{up}^{-1})^{-1}=26.364=14.21dB\\
+		BER=Q(\sqrt{2\frac{e_b}{n_0}})=Q(7.261)=2.08410^{-13}
+	\end{gather*}
+	\textbf{3.} ¿Cuál será la probabilidad de esperar a transmitir un paquete si la tasa total física del transpondedor del satélite que se utiliza es de 1.6Mbps y el tráfico que genera cada VSAT es de 0.25E? 
+\end{exercise}
 % subsection ejercicios5 (end)
