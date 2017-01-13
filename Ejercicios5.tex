@@ -22,7 +22,44 @@
 		\end{itemize}
 	\end{itemize} 
 	DATOS: En la modulación FM, tenemos que $(\frac{S}{N})$,es la relación señal a ruido de la señal demodulada. Donde $p$ y $w$ son factores de ponderación débil en sistemas FM (las bandas altas sufren mayor atenuación). $\Delta_{eff}$ es la excursión efectiva de la señal y $f_m$ es la frecuencia base de la FM. $p+w=7.7dB$. Considere la banda base de la voz como frecuencia base, es decir $f_m=3400Hz$. Recuerde que $\Delta_{eff}=\frac{\delta_{fc}}{\sqrt{2}}$, y que $B_M=2(f_m+\Delta_{fc})$.\\
-	\textbf{1.} Obtenga la relación señal a ruido de la señal de voz demodulada en ambos enlaces. Suponga una distancia entre el satélite y la estación marítima de 38000 km.
+	\textbf{1.} Obtenga la relación señal a ruido de la señal de voz demodulada en ambos enlaces. Suponga una distancia entre el satélite y la estación marítima de 38000 km.\\
+	Algunos datos son comunes a todos los enlaces:
+	\begin{gather*}
+		B_{canal}=\frac{B}{N}=\frac{2MHz}{40canales}=50kHz\\
+		10logKB=10log(1.38*10^{-23}*50*10^3)=-181.612dB
+	\end{gather*}
+	Primero calcularemos el enlace outbound, de la estación costera a la estación marítima. 
+	\begin{gather*}
+		\lambda=\frac{c}{f}=\frac{3*10^8}{6*10^9-25*10^3}=0.05m\\
+		G_{EC}=10log\eta(\frac{\pi D}{\lambda})^2=38.974dB\\
+		PIRE_{EC}=P_{ECtx}+G_{EC}=48.974dBW\\
+		\frac{G}{T}|_{sat}=G-10logT=-10.99dB\\
+		L_b=10log(\frac{4\pi d}{\lambda})^2=199.6dB\\
+		(\frac{C}{N})_{up}=PIRE_{EC}+\frac{G}{T}|_{sat}-L_b-OBO-10logKB=19.996dB
+	\end{gather*}
+	Downlink del enlace outbound:
+	\begin{gather*}
+		\lambda=\frac{c}{f}=\frac{3*10^8}{1.5*10^9+1.975*10^6}=0.1997m\\
+		PIRE_{sat}=P_{tx}-10log\frac{B}{B_{canal}}=-6.021dBW\\
+		L_b=10log(\frac{4\pi d}{\lambda})^2=187.572dB\\
+		(\frac{C}{N})_{down}=PIRE_{sat}+\frac{G}{T}|_{EM}-L_b-OBO-10logKB=-15.981dB
+	\end{gather*}
+	Para el enlace inbound el uplink será:
+	\begin{gather*}
+		\lambda=\frac{c}{f}=\frac{3*10^8}{1.6*10^9-25*10^3}=0.188m\\
+		G_{EM}=10log\eta(\frac{\pi D}{\lambda})^2=27.47dB\\
+		PIRE_{EM}=P_{EMtx}+G_{EM}=37.47dBW\\
+		\frac{G}{T}|_{sat}=G-10logT=-10.99dB\\
+		L_b=10log(\frac{4\pi d}{\lambda})^2=188.097dB\\
+		(\frac{C}{N})_{up}=PIRE_{EM}+\frac{G}{T}|_{sat}-L_b-IBO-10logKB=19.995dB
+	\end{gather*}
+	Downlink del enlace inbound:
+	\begin{gather*}
+		\lambda=\frac{c}{f}=\frac{3*10^8}{4*10^9+1.975*10^6}=0.075m\\
+		PIRE_{sat}=P_{tx}-10log\frac{B}{B_{canal}}=-6.021dBW\\
+		L_b=10log(\frac{4\pi d}{\lambda})^2=196.079dB\\
+		(\frac{C}{N})_{down}=PIRE_{sat}+\frac{G}{T}|_{EC}-L_b-IBO-10logKB=-24.488dB
+	\end{gather*}
 \end{exercise}
 \begin{exercise}[2]
 	Se desea diseñar una red VSAT bidereccional en estrella, apoyada en el satélite Hispasat (30 O), con funcionamiento en banda Ku. Tanto el Hub como las estaciones VSAT se encuentran en Madrid (40.5 N, 3.5 O).\\
@@ -172,7 +209,39 @@ Como 8.21ms es menor que el retardo máximo permitido de 8.22ms el sistema cumpl
 	La tasa binaria de las estaciones VSAT es de 400kbps bidireccionales. La modulación utilizada es QPSK tanto en el inbound como en el outbound. Las frecuencias son las siguientes: 1.5/13GHz para comunicación HUB-Satélite y 1.6/12GHz para satélite-VSAT. El sistema utiliza TDM/TDMA.\\
 	Se le pide que conteste razonadamente a las siguientes cuestiones referidas al outbound de una estación situada a 20º de longitud este con respecto al HUB, que está situado a 40.2ºN y 3.5ºO: \\
 	\textbf{1.} La relación portadora a ruido\\
+	En ambos casos el ancho de banda será el mismo:
+	\[B_{canal}=\frac{B}{R}=\frac{400kbps}{2\sfrac{bps}{Hz}}=200kHz\]
+	Para el Uplink del enlace outbound:
+	\begin{gather*}
+		\lambda=40.2º\\
+		\phi=30º-3.5º=26.5º\\
+		d=\sqrt{(R_e+h)^2+R_e^2-2R_e(R_e+h)cos\lambda cos\phi}=37984.811km\\
+		\lambda=\frac{c}{f}=\frac{3*10^8}{13*10^9-100*10^3}=0.1m\\
+		PIRE_{HUB}=PIRE-10log\frac{B}{B_{canal}}=5.229dBW\\
+		(\frac{G}{T})_{sat}=10log\eta(\frac{\pi D}{\lambda})^2-10logT=19.72dB\\
+		L_b=10log(\frac{4\pi d}{\lambda}=193.576dB\\
+		10logKB=-195.591dB\\
+		(\frac{C}{N})_{up}=PIRE_{HUB}+(\frac{G}{T})_{sat}-L_b-OBO-10logKB=24.964dB
+	\end{gather*}
+	Para el downlink del enlace outbound:
+	\begin{gather*}
+		\lambda=40.2º\\
+		\phi=30º-23.5º=6.5º\\
+		d=\sqrt{(R_e+h)^2+R_e^2-2R_e(R_e+h)cos\lambda cos\phi}=37450.099km\\
+		\lambda=\frac{c}{f}=\frac{3*10^8}{1.6*10^9+1.9*10^6}=0.187m\\
+		PIRE_{sat}=PIRE-10log\frac{B}{B_{canal}}=7.447dBW\\
+		(\frac{G}{T})_{vsat}=10log\eta(\frac{\pi D}{\lambda})^2-10logT=4.998dB\\
+		L_b=10log(\frac{4\pi d}{\lambda}=188.016dB\\
+		10logKB=-195.591dB\\
+		(\frac{C}{N})_{down}=PIRE_{HUB}+(\frac{G}{T})_{sat}-L_b-OBO-10logKB=18.02dB
+	\end{gather*}
 	\textbf{2.} Calcule la probabilidad de error\\
+	\begin{gather*}
+		(\frac{e_b}{n_0})_{up}=(\frac{C}{N})_{up}\frac{B}{R_b}=156.809=21.954dB\\
+		(\frac{e_b}{n_0})_{down}=(\frac{C}{N})_{down}\frac{B}{R_b}=31.693=15.01dB\\
+		(\frac{e_b}{n_0})_{outbound}=((\frac{e_b}{n_0})_{up}^{-1}+(\frac{e_b}{n_0})_{up}^{-1})^{-1}=26.364=14.21dB\\
+		BER=Q(\sqrt{2\frac{e_b}{n_0}})=Q(7.261)=2.08410^{-13}
+	\end{gather*}
 	\textbf{3.} ¿Cuál será la probabilidad de esperar a transmitir un paquete si la tasa total física del transpondedor del satélite que se utiliza es de 1.6Mbps y el tráfico que genera cada VSAT es de 0.25E? 
 \end{exercise}
 % subsection ejercicios5 (end)
