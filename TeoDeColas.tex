@@ -12,7 +12,7 @@
 	\item $\lambda$: Tasa de llegadas. Se mide en usuarios por unidad de tiempo.\\
 	\item $\lambda_a$:Tasa de llegadas efectiva, la anterior menos los usarios expulsados del sistema. Se mide en usuarios por unidad de tiempo.\\
 	\item c: Número de servidores del sistema.\\
-	\item Z: Sistema de cola, lo más común FIFO.\\
+	\item Z: Sistema de cola, lo más común \acrshort{FIFO}.\\
 \end{itemize}
 Para analizar el sistema siempre hay que asumir dos cosas: que el sistema no está colapsado y que se está produciendo un reparto uniforme entre todos los servidores.\\
 \begin{equation}%[Tráfico ofrecido]
@@ -81,11 +81,11 @@ P(k)=\frac{Ke^{-k}}{K!}
 \item {c:} número de servidores.
 \item {k:} capacidad del sistema. En caso de no venir especificado se asume capacidad "infinita".
 \item {m:} tamaño de la población. En caso de no venir especificado se asume población "infinita".
-\item {Z:} disciplina de la cola. En caso de no venir especificado se asume una cola FIFO.
+\item {Z:} disciplina de la cola. En caso de no venir especificado se asume una cola \acrshort{FIFO}.
 \end{itemize}
 Cuando se habla de poblaciones o capacidades infinitas en realidad significa que el número es mucho mayor que el número de servidores. Población/Capacidad$>>$c.
 \subsubsection{Modelo M/M/1}
-Un modelo con llegadas poissonianas, tasa de servicio exponencial, 1 único servidor, una cola infinita, población infinita y una cola con disciplina FIFO. Este modelo tiene una probabilidad de bloqueo nula $P_B=0$ con lo cual se cumple lo siguiente: $A_c=A_o=\sfrac{\lambda}{\mu}$. Al tener un solo servidor además se ve que $\rho=A_o$.
+Un modelo con llegadas poissonianas, tasa de servicio exponencial, 1 único servidor, una cola infinita, población infinita y una cola con disciplina \acrshort{FIFO}. Este modelo tiene una probabilidad de bloqueo nula $P_B=0$ con lo cual se cumple lo siguiente: $A_c=A_o=\sfrac{\lambda}{\mu}$. Al tener un solo servidor además se ve que $\rho=A_o$.
 \begin{example}[M/M/1]
 Tasa de llegadas 30$\sfrac{\text{clientes}}{\text{hora}}$ con una tasa de servicio de 115$\sfrac{\text{segundos}}{\text{cliente}}$ en un único servidor.
 \[A_c=A_o=\frac{\lambda}{\mu}=30*115\sfrac{1}{3600}=0.9583E\] \\
@@ -97,7 +97,7 @@ Tasa de llegadas 30$\sfrac{\text{clientes}}{\text{hora}}$ con una tasa de servic
 Los usuarios se quejarán. Hay que esperar 44 minutos en la cola para un servicio que tarda 2 en ser servido.
 \end{example}
 \subsubsection{Modelo M/M/c}
-Un modelo con llegadas poissonianas, tasa de servicio exponencial, c servidores idénticos, una cola infinita, población infinita y una cola con disciplina FIFO. Este modelo tiene una probabilidad de bloqueo nula $P_B=0$ con lo cual se cumple lo siguiente: $A_c=A_o=\sfrac{\lambda}{\mu}$.\\
+Un modelo con llegadas poissonianas, tasa de servicio exponencial, c servidores idénticos, una cola infinita, población infinita y una cola con disciplina \acrshort{FIFO}. Este modelo tiene una probabilidad de bloqueo nula $P_B=0$ con lo cual se cumple lo siguiente: $A_c=A_o=\sfrac{\lambda}{\mu}$.\\
 \begin{example}[M/M/c]
 Continuando el ejemplo anterior. $\lambda=30\sfrac{\text{clientes}}{\text{hora}}$ con una media de tiempo de servicio $\text{E(s)}=\sfrac{1}{\mu}=115\sfrac{\text{segundos}}{\text{cliente}}$. Contamos con 2 sevidores en lugar de uno. Compararlo con el anterior: W=46min $\text{W}_{\text{q}}$=44min\\
 \begin{gather*}
@@ -109,7 +109,7 @@ W_q=\frac{E(s)C(A_o,c)}{c(1-\rho)}=34.2\text{ segundos en la cola de media}
 Se puede ver una gran mejoría entre los 44 minutos con un único servidor y los 34 segundos en el caso de dos servidores.
 \end{example}
 \subsubsection{Modelo M/M/c/c}
-Un modelo con llegadas poissonianas, tasa de servicio exponencial, c servidores idénticos, sin colas, población infinita y una cola con disciplina FIFO. En este modelo es en el primero que vemos una probabilidad de bloqueo distinta de cero, $P_B=B(A_o,c)$ esta probabilidad se puede calcular gráficamente con las gráficas del Erlang B. En cambio aplicando esto a las fórmulas de little podemos ver lo siguiente: $L_q=0\to L=L_s=A_c=A_o(1-P_B)$\\
+Un modelo con llegadas poissonianas, tasa de servicio exponencial, c servidores idénticos, sin colas, población infinita y una cola con disciplina \acrshort{FIFO}. En este modelo es en el primero que vemos una probabilidad de bloqueo distinta de cero, $P_B=B(A_o,c)$ esta probabilidad se puede calcular gráficamente con las gráficas del Erlang B. En cambio aplicando esto a las fórmulas de little podemos ver lo siguiente: $L_q=0\to L=L_s=A_c=A_o(1-P_B)$\\
 \begin{example}[M/M/c/c]
 8 servidores con $E(s)=\sfrac{1}{\mu}=4\sfrac{\text{h}}{\text{usuario}}$ y una tasa de llegadas $\lambda=3\sfrac{\text{usuarios}}{\text{h}}$\\
 \begin{gather*}

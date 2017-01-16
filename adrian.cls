@@ -11,7 +11,6 @@
 \RequirePackage{xfrac}
 \RequirePackage{float}
 \RequirePackage{xcolor}
-%\RequirePackage{glossaries}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax

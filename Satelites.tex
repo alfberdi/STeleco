@@ -13,7 +13,7 @@
 			\item Servicio fijo: Enlaces entre dos puntos terrestres usando el satélite como repetidor.
 			\item Servicio Móvil: Uno o más puntos fijos y móviles, como barcos, aviones y torres de control.
 			\item Servicio de radiodifusión: Uno o más puntos fijos y terminales dispersos, como la televisión o la radio satélite.
-			\item Servicio de radiodeterminación: Localización determinada por satélites, como los sistemas GPS o Galileo.
+			\item Servicio de radiodeterminación: Localización determinada por satélites, como los sistemas \acrshort{GPS} o Galileo.
 			\item Servicio de exploración de la tierra: desde mapas del tiempo (meteosat), creación de mapas hasta la exploración de recursos.
 			\item Servicio de exploración del espacio: mediante el uso de telescopios o radiotelescopios como el Hubble.
 			\item Servicio entre satélites: La comunicación entre satélites no tiene limitaciones físicas para el uso de ancho de banda, por ejemplo, a 60GHz el oxígeno absorbe la señal, en el espacio no.
@@ -21,13 +21,13 @@
 	% subsection serviciosSat (end)
 	\subsection{Estructura del sistema de comunicación satélite}
 	\label{sub:estructSat}
-		\begin{figure}[htp]
+		\begin{figure}[H]
 			\centering
 			\includegraphics[width=0.7\textwidth]{Imagen/arquisatelite.jpg}
 			\caption{Estructura de un sistema de comunicación satélite}
 		\end{figure}
 		\begin{itemize}
-			\item Estación terrena de transmisión: Recibe la señal para posteriormente modularla a una radiofrecuencia (RF), amplificarla y después transmitirla. En transmisión se necesita mucha potencia y una gran directividad.
+			\item Estación terrena de transmisión: Recibe la señal para posteriormente modularla a una radiofrecuencia (\acrshort{RF}), amplificarla y después transmitirla. En transmisión se necesita mucha potencia y una gran directividad.
 			\item Enlaces: tanto el enlace ascendente como el descendente se modelan como sistemas de transmisión en espacio libre con pérdidas ocasionadas por la frecuencia, distancia, atmosfera e incluso la lluvia.
 			\item Satélite: Se trata de una estación repetidora, que amplifica, cambia de banda y retransmite las señales. Las partes involucradas en cada acción vienen descritas a continuación:
 			\begin{itemize}
@@ -44,14 +44,14 @@
 			\item Órbita: En la mayoría de las ocasiones se utiliza una órbita geoestacionaria. Para comunicaciones móviles se empiezan a utilizar órbitas meo y leo para reducir el retardo y la potencia transmitida.
 			\item Cobertura: Se pueden usar varios transpondedores para poder conformar un haz de diferente tipo y anchura.
 			\item Conectividad: Capacidad de establecer enlaces entre estaciones terrenas. 
-			\item Técnicas de acceso múltiple para la compartición del satélite. Se suelen utilizar FDMA y TDMA, en algunas ocasiones se puede utilizar CDMA pero supone un gran problema.
+			\item Técnicas de acceso múltiple para la compartición del satélite. Se suelen utilizar \acrshort{FDMA} y \acrshort{TDMA}, en algunas ocasiones se puede utilizar CDMA pero supone un gran problema.
 			\item Banda de frecuencia y ancho de banda: Se utilizan diferentes bandas según el servicio y la disponibilidad necesitada. Las bandas a mayor frecuencia han de transmitir más potencia para superar la peor propagación. Para aumentar la reutilización se separan haces de la misma frecuencia polarizandolos opuestos. Para aumentar aún más la eficiencia se mejoran el tratamiento de la señal y las modulaciones.
 			\item Potencia: Se busca un compromiso entre la distancia a recorrer y la limitación a bordo del satélite. Una nueva limitación es la interferencia con otros satélites y estaciones terrenas.
 		\end{itemize}
 	% subsection estructSat (end)
 	\subsection{Órbitas}
 	\label{sub:orbitas}
-		Las óbitas se basan en las leyes de Kepler, consecuencia de la ley de gravitación universal. La elección de la órbita depende del tipo de cobertura, aplicación o recursos económicos. Las órbitas disponibles son escasas. Existen dos tipos de órbitas, las geoestacionarias y las oblícuas. Las órbitras geoestacionarias (GEO) son órbitas circulares, en una latitud baja, inclinación nula y un periodo de revolución igual al ciclo terrestre. Estos satélites siempre son visibles y no requieren, teoricamente, de un seguimiento. En las órbitas oblicuas, en cambio, el seguimiento ha de ser continuo, ya que el satélite sale y se pone. Dependiendo de la altura de la órbita puede ser: baja (LEO), media (MEO) o alta (HEO). Tanto los LEO como los MEO son más baratos de lanzar que los GEO.\\
+		Las óbitas se basan en las leyes de Kepler, consecuencia de la ley de gravitación universal. La elección de la órbita depende del tipo de cobertura, aplicación o recursos económicos. Las órbitas disponibles son escasas. Existen dos tipos de órbitas, las geoestacionarias y las oblícuas. Las órbitras geoestacionarias (\acrshort{GEO}) son órbitas circulares, en una latitud baja, inclinación nula y un periodo de revolución igual al ciclo terrestre. Estos satélites siempre son visibles y no requieren, teoricamente, de un seguimiento. En las órbitas oblicuas, en cambio, el seguimiento ha de ser continuo, ya que el satélite sale y se pone. Dependiendo de la altura de la órbita puede ser: baja (\acrshort{LEO}), media (\acrshort{MEO}) o alta (\acrshort{HEO}). Tanto los \acrshort{LEO} como los \acrshort{MEO} son más baratos de lanzar que los \acrshort{GEO}.\\
 		Las ventajas de las órbitas de tipo geoestacionaria son, la gran superficie de cobertura y permiten la existencia de estaciones terrenas fijas. Las mayores desventajas son la potencia necesaria para la transmisión, las antenas necesarias, los retardos, los lanzamientos de alto coste y la imposibilidad que presentan de cubrir latitudes altas.
 		La órbita geoestacionaria viene definida por la siguiente formula, tomando los siguientes valores. $\omega=\frac{2\pi}{T}$ para un periodo de rotación T=23h 56min.
 		\[G\frac{Mm}{d^2}=md\omega^2\]
@@ -99,10 +99,10 @@
 	% subsection satUtil (end)
 	\subsection{Acceso múltiple}
 	\label{sub:satAccesoMultiple}
-		En el trayecto ascendente cada estación terrena accede individualmente al satélite. El trayecto descendente suele usarse la difusión y cada una de las estaciones terrenas extrae la señal destinada a ella. El satélite realiza la traslación de frecuencias, amplificación y filtrado de las señales para la retransmisión. En los sistemas satélite comercial se usan 2 tecnicas de acceso múltiple: FDMA y TDMA.\\
-		En FDMA se distribuye el ancho de banda entre las estaciones participantes. Esto produce un nivel de interferencia entre estaciones muy pequeña. El transpondedor hace la conversación de frecuencias y amplificación. Esto produce un problema de ruido de intermodulación en el amplificador. El enlace descendente difunde toda la banda y la estación terrena recibe toda para a continuación sintonizar las portadoras destinadas a ella.\\
-		En TDMA la información debe ser digital. Hay que mantener tiempos de guarda para compensar la diferencia en los tiempos de llegada al satélite. TDMA solo se usa en el sentido ascendente, para el sentido descendente se transmiten las señales con multiplex por división en tiempo. El número de intervalos por trama varía entre 3 y 100, variando la duración de las tramas en consecuencia.
-		El FDMA es más facil de realizar y no requiere de temporización. El TDMA, en cambio, utiliza toda la potencia disponible, es más flexible y además es digital controlando errores y con modulaciones digitales. Como contra, en TDMA la temporización es muy estricta y mantiene un retardo añadido al ser una transmisión discontinua. El mayor contra del FDMA es el ruido intermodulación que se produce entre las portadoras, esto reduce el tiempo de trabajo del amplificador.
+		En el trayecto ascendente cada estación terrena accede individualmente al satélite. El trayecto descendente suele usarse la difusión y cada una de las estaciones terrenas extrae la señal destinada a ella. El satélite realiza la traslación de frecuencias, amplificación y filtrado de las señales para la retransmisión. En los sistemas satélite comercial se usan 2 tecnicas de acceso múltiple: \acrshort{FDMA} y \acrshort{TDMA}.\\
+		En \acrshort{FDMA} se distribuye el ancho de banda entre las estaciones participantes. Esto produce un nivel de interferencia entre estaciones muy pequeña. El transpondedor hace la conversación de frecuencias y amplificación. Esto produce un problema de ruido de intermodulación en el amplificador. El enlace descendente difunde toda la banda y la estación terrena recibe toda para a continuación sintonizar las portadoras destinadas a ella.\\
+		En \acrshort{TDMA} la información debe ser digital. Hay que mantener tiempos de guarda para compensar la diferencia en los tiempos de llegada al satélite. \acrshort{TDMA} solo se usa en el sentido ascendente, para el sentido descendente se transmiten las señales con multiplex por división en tiempo. El número de intervalos por trama varía entre 3 y 100, variando la duración de las tramas en consecuencia.
+		El \acrshort{FDMA} es más facil de realizar y no requiere de temporización. El \acrshort{TDMA}, en cambio, utiliza toda la potencia disponible, es más flexible y además es digital controlando errores y con modulaciones digitales. Como contra, en \acrshort{TDMA} la temporización es muy estricta y mantiene un retardo añadido al ser una transmisión discontinua. El mayor contra del \acrshort{FDMA} es el ruido intermodulación que se produce entre las portadoras, esto reduce el tiempo de trabajo del amplificador.
 	% subsection satAccesoMultiple (end)
 	\subsection{Balance de Enlace}
 	\label{sub:balance}
@@ -111,27 +111,27 @@
 			\tag{Balance de enlace}
 			\frac{c}{N_0}=P_{tx}+G_{tx}+\frac{G_{rx}}{T}-L-BO-10logKB
 		\end{equation}
-		De la fórmula sabemos que T es la temperatura del receptor, K es la constante de Boltzman, B el ancho de banda del canal, L son las pérdidas del enlace, BO es el Back-Off. El back-Off se diferencia en: Input Back-Off para el sentido ascendente y Output Back-Off para el descendente, IBO y OBO. El factor de calidad del enlace es el cociente entre la ganancia y temperatura del receptor.\\
+		De la fórmula sabemos que T es la temperatura del receptor, K es la constante de Boltzman, B el ancho de banda del canal, L son las pérdidas del enlace, BO es el Back-Off. El back-Off se diferencia en: Input Back-Off para el sentido ascendente y Output Back-Off para el descendente, \acrshort{IBO} y \acrshort{OBO}. El factor de calidad del enlace es el cociente entre la ganancia y temperatura del receptor.\\
 		La calidad del enlace para enlaces digitales se calcula de la siguiente forma:
 		\begin{equation}
 			\tag{Balance de enlace digital}
 			\frac{e_b}{n_0}=\frac{c}{n_0}\frac{1}{R_b}
 		\end{equation}
 	% subsection balance (end)
-	\subsection{Redes Very Small Aperture Terminals (VSAT)}
+	\subsection{Redes Very Small Aperture Terminals (\acrshort{VSAT})}
 	\label{sub:vsat}
-		Redes de comunicaciones por satélite que proporcionan servicios FSS y que utilizan estaciones pequeñas en las instalaciones del usuario. Proporcionan conexiones entre terminales remotos y una estación terminal (HUB). Los sistemas VSAT tienen como principales ventajas el acceso a puntos remotos, una gran calidad, facilidad de crecimiento de la red, adaptatividad y unos costes bajos de realización.
+		Redes de comunicaciones por satélite que proporcionan servicios FSS y que utilizan estaciones pequeñas en las instalaciones del usuario. Proporcionan conexiones entre terminales remotos y una estación terminal (HUB). Los sistemas \acrshort{VSAT} tienen como principales ventajas el acceso a puntos remotos, una gran calidad, facilidad de crecimiento de la red, adaptatividad y unos costes bajos de realización.
 		\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{Imagen/diavsat.jpg}
-		\caption{Diagrama de una red VSAT}
+		\caption{Diagrama de una red \acrshort{VSAT}}
 		\end{figure}
 		El enlace inbound se define como el enlace en sentido terminal remoto$\to$HUB pasando por el satélite. El sentido outbound al ser un sistema multicast desde un único punto se utiliza duplexación o en tiempo(TDM) o en frecuencia(FDM). El sentido inbound es el único que utiliza técnicas de multiplexación. Estas técnicas pueden permitir el acceso aleatorio con aloha, aloha ranurado, la asignación bajo demanda de los recursos, o incluso la asignación fija de recursos. La utilización de las diferentes formas de asignación variarán dependiendo de la conformación del tráfico utilizado, rafagas cortas, tráfico interno o tráfico continuo.
 	% subsection vsat (end)
 	\subsection{Comunicaciones móviles por satélite}
 	\label{sub:satMovil}
 		En comunicaciones móviles por satélite se utilizan dos tipos de órbita, de baja altura o geoestacionarios. Los costes son menores en órbita baja pero la cobertura en los polos se hace imposible.\\
-		El campo de visión de la superficie terrestre es limitado en órbitas bajas, con lo cual hace falta gran cantidad de satélites organizados para dar una cobertura ancha. Las órbitas LEO pueden ser circulares o elípticas, polares o inclinadas. Para el cálculo de las características de las órbitas LEO supondremos órbitas circulares, el radio de la tierra lo supondremos 6377km, el radio de la órbita lo definiremos como a y la constante de keppler $k=Gm_E=3.98601352*10^5\sfrac{km^3}{seg^2}$.
+		El campo de visión de la superficie terrestre es limitado en órbitas bajas, con lo cual hace falta gran cantidad de satélites organizados para dar una cobertura ancha. Las órbitas \acrshort{LEO} pueden ser circulares o elípticas, polares o inclinadas. Para el cálculo de las características de las órbitas \acrshort{LEO} supondremos órbitas circulares, el radio de la tierra lo supondremos 6377km, el radio de la órbita lo definiremos como a y la constante de keppler $k=Gm_E=3.98601352*10^5\sfrac{km^3}{seg^2}$.
 		\begin{equation}
 			\tag{Velocidad lineal}
 			v_s=\sqrt{k(\frac{2}{r_E+h})}=\sqrt{\frac{k}{r_E+h}}
@@ -161,7 +161,7 @@
 			N=\frac{4\pi r_E^2}{S}=\frac{2}{1-cos\gamma}
 		\end{equation}
 	% subsection satMovil (end)
-	\subsection{Sistemas de navegación por satélite GPS}
+	\subsection{Sistemas de navegación por satélite \acrshort{GPS}}
 \label{sub:gps}
 	A partir de las distancias entre 3 satélites y el receptor, conocidas las posiciones de los satélites, se puede calcular la posición del receptor. La mayor parte del error se debe a la deriva existente entre el reloj del satélite y del receptor. Otras fuentes de error son los efectos de la propagación en las diferentes capas de la atmósfera.\\
 	Existen dos códigos diferenciados para la localización según la precisión necesaria. El código P y los códigos C/A. Los primeros, mucho más precisos, se utilizan en aplicaciones militares y los segundos en aplicaciones comerciales.
